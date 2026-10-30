@@ -1,0 +1,29 @@
+// Drawbar Organ: part of dawsome-kit, written by build.py.
+// From FreePats Drawbar organ emulation, version 2019-07-12 (SFZ + WAV); CC0-1.0, see set.json.
+// Uses only the SFZ opcodes Dawsome reads; keys are MIDI numbers (C4 = 60).
+
+<control>
+default_path=samples/
+
+<global>
+loop_mode=loop_continuous
+volume=-10.40
+amp_veltrack=0
+ampeg_release=0.7
+
+<region> sample=C2.flac lokey=33 hikey=37 pitch_keycenter=36 loop_start=58165 loop_end=352898
+<region> sample=E2.flac lokey=38 hikey=41 pitch_keycenter=40 loop_start=59903 loop_end=207102
+<region> sample=G#2.flac lokey=42 hikey=45 pitch_keycenter=44 loop_start=104618 loop_end=248750
+<region> sample=C3.flac lokey=46 hikey=49 pitch_keycenter=48 loop_start=73860 loop_end=220550
+<region> sample=E3.flac lokey=50 hikey=53 pitch_keycenter=52 loop_start=72699 loop_end=220666
+<region> sample=G#3.flac lokey=54 hikey=57 pitch_keycenter=56 loop_start=35211 loop_end=178238
+<region> sample=C4.flac lokey=58 hikey=61 pitch_keycenter=60 loop_start=38804 loop_end=186171
+<region> sample=E4.flac lokey=62 hikey=65 pitch_keycenter=64 loop_start=48435 loop_end=181758
+<region> sample=G#4.flac lokey=66 hikey=69 pitch_keycenter=68 loop_start=54553 loop_end=204130
+<region> sample=C5.flac lokey=70 hikey=73 pitch_keycenter=72 loop_start=50253 loop_end=197630
+<region> sample=E5.flac lokey=74 hikey=77 pitch_keycenter=76 loop_start=49295 loop_end=195297
+<region> sample=G#5.flac lokey=78 hikey=81 pitch_keycenter=80 loop_start=56418 loop_end=195805
+<region> sample=C6.flac lokey=82 hikey=85 pitch_keycenter=84 loop_start=58367 loop_end=189950
+<region> sample=E6.flac lokey=86 hikey=89 pitch_keycenter=88 loop_start=33023 loop_end=164350
+<region> sample=G#6.flac lokey=90 hikey=93 pitch_keycenter=92 loop_start=26693 loop_end=157589
+<region> sample=C7.flac lokey=94 hikey=98 pitch_keycenter=96 loop_start=19071 loop_end=150014

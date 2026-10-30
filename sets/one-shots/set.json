@@ -1,0 +1,24 @@
+{
+  "name": "One-shots and Loops",
+  "kind": "samples",
+  "maker": "Sonic Pi contributors; each sound's Freesound uploader (listed in etc/samples/README.md)",
+  "licence": "CC0-1.0",
+  "licence_page": "https://github.com/sonic-pi-net/sonic-pi/blob/df6f17e4625b0451fa2af8accf2e1e641c7ad458/LICENSE.md",
+  "licence_quote": "All the bundled samples are individually licensed under a CC0 1.0 Universal Public Domain Dedication. They have been obtained from freesound.org and links to their sources can be found in the file etc/samples/README.md",
+  "source": "Sonic Pi sample set (etc/samples), at a pinned commit of the dev branch",
+  "source_url": "https://github.com/sonic-pi-net/sonic-pi/tree/df6f17e4625b0451fa2af8accf2e1e641c7ad458",
+  "files": 34,
+  "size": 10899235,
+  "decoded_size": 46889032,
+  "sample_rates": [
+    44100
+  ],
+  "channels": [
+    1,
+    2
+  ],
+  "notes": [
+    "plain sound files for the sampler, no .sfz: ambient sounds (ambi_), glitches (glitch_), misc_, vinyl_ and loops (loop_), Sonic Pi's FLAC files unchanged",
+    "left out after reading each sound's Freesound page: loop_amen: the Amen break (The Winstons, 'Amen, Brother'), says its page; loop_amen_full: the Amen break, says its page; loop_compus: made with an Ableton Live factory kit (LD Compuspank), says its page; loop_safari: 'recorded in my keyboard': a keyboard's built-in content; loop_breakbeat: includes another user's sub bass, whose page is gone (404); vinyl_backspin: a scratch of an unnamed record on a turntable; vinyl_scratch: a scratch of an unnamed record; misc_crow: its Freesound page is gone (404); misc_cineboom: its Freesound page is gone (404)"
+  ]
+}

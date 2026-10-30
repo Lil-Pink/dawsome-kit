@@ -1,0 +1,31 @@
+{
+  "name": "Choir Pad",
+  "kind": "instrument",
+  "maker": "快乐爱的小精灵 (Elf of Happy and Love), for FreePats, made with ZynAddSubFX",
+  "licence": "CC0-1.0",
+  "licence_page": "https://freepats.zenvoid.org/Synthesizer/synth-pad.html",
+  "licence_quote": "Published under the terms of the Creative Commons CC0 1.0 public domain dedication.",
+  "source": "FreePats Synth Pad Choir, version 2020-05-16 (SFZ + FLAC)",
+  "source_url": "https://github.com/freepats/synth-pad-choir/releases/download/2020-05-16/SynthPadChoir-SFZ+FLAC-20200516.7z",
+  "sfz": "pad-choir.sfz",
+  "zones": 12,
+  "keys": [
+    33,
+    108
+  ],
+  "loops": true,
+  "peak_db": -1.0,
+  "files": 12,
+  "size": 6910586,
+  "decoded_size": 28754592,
+  "sample_rates": [
+    44100
+  ],
+  "channels": [
+    2
+  ],
+  "notes": [
+    "loop_end is the source's less one in all 12 loops: the source writes the frame after the loop, and its files hold the loop's first frames again from there (measured), where SFZ and the DAW name the loop's last frame; read as written, every wrap played the loop's first frame twice",
+    "volume lowered by 1.60 dB so a full-velocity note peaks at or below -1 dBFS (its loudest note reaches +0.60 dBFS when resampled)"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Sweep Pad",
+  "kind": "instrument",
+  "maker": "FreePats, made with ZynAddSubFX / Yoshimi",
+  "licence": "CC0-1.0",
+  "licence_page": "https://freepats.zenvoid.org/Synthesizer/synth-pad.html",
+  "licence_quote": "Published under the terms of the Creative Commons CC0 1.0 public domain dedication.",
+  "source": "FreePats Sweep Pad, version 2019-08-13 (SFZ + FLAC)",
+  "source_url": "https://github.com/freepats/sweep-pad/releases/download/2019-08-13/SweepPad-SFZ+FLAC-20190813.7z",
+  "sfz": "pad-sweep.sfz",
+  "zones": 13,
+  "keys": [
+    33,
+    96
+  ],
+  "loops": true,
+  "peak_db": -1.0,
+  "files": 13,
+  "size": 3110784,
+  "decoded_size": 16823432,
+  "sample_rates": [
+    44100
+  ],
+  "channels": [
+    1
+  ],
+  "notes": [
+    "loop_end is the source's less one in all 13 loops: the source writes the frame after the loop, and its files hold the loop's first frames again from there (measured), where SFZ and the DAW name the loop's last frame; read as written, every wrap played the loop's first frame twice",
+    "volume lowered by 1.02 dB so a full-velocity note peaks at or below -1 dBFS (its loudest note reaches +0.02 dBFS when resampled)"
+  ]
+}

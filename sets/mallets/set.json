@@ -1,0 +1,35 @@
+{
+  "name": "Marimba",
+  "kind": "instrument",
+  "maker": "Versilian Studios LLC",
+  "licence": "CC0-1.0",
+  "licence_page": "https://github.com/sgossner/VCSL",
+  "licence_quote": "This collection is under a Creative Commons 0 license. Essentially it's Public Domain- you can do whatever you want with these sounds (even make commercial software), no royalties, no credit, no special terms.",
+  "source": "Versilian Community Sample Library (VCSL), at a pinned commit",
+  "source_url": "https://github.com/sgossner/VCSL/tree/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e",
+  "sfz": "mallets.sfz",
+  "zones": 30,
+  "keys": [
+    36,
+    100
+  ],
+  "loops": false,
+  "peak_db": -1.0,
+  "files": 30,
+  "size": 2560781,
+  "decoded_size": 29883704,
+  "sample_rates": [
+    44100
+  ],
+  "channels": [
+    2
+  ],
+  "notes": [
+    "VCSL's marimba, three velocity layers (soft, medium, loud); notes play to their end",
+    "each sample cut where it stays 60 dB under its peak",
+    "the 10 samples whose tail is the recording's hiss (F1 and C2 in VCSL's names, every layer; F5 soft and medium; C6 medium and loud; measured), besides: its tail, where the decay has sunk into the recording's hiss (the first 50 ms within 3 dB of the hiss's level), faded linearly in decibels down to the hiss 60 dB under the peak at the cut, so it fades into the cut instead of stopping at the hiss's level (none where the hiss is under that already)",
+    "VCSL names notes with C3 = MIDI 60; keys here are MIDI numbers",
+    "each sample is normalized to -1 dBFS before the cut to 16 bits, and its region's volume puts it back at its recorded level against the loudest sample of its velocity layer",
+    "volume lowered by 0.01 dB so a full-velocity note peaks at or below -1 dBFS (its loudest note reaches -0.99 dBFS when resampled)"
+  ]
+}

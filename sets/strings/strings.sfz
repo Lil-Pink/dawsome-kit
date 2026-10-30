@@ -1,0 +1,45 @@
+// Strings: part of dawsome-kit, written by build.py.
+// From VS Chamber Orchestra 2: Community Edition (raw WAV), at a pinned commit; CC0-1.0, see set.json.
+// Uses only the SFZ opcodes Dawsome reads; keys are MIDI numbers (C4 = 60).
+
+<control>
+default_path=samples/
+
+<global>
+loop_mode=loop_continuous
+ampeg_release=0.8
+
+<region> sample=susvib_C1_v1_1.flac lokey=31 hikey=38 pitch_keycenter=36 lovel=1 hivel=63 loop_start=163170 loop_end=251369 volume=-0.01
+<region> sample=susvib_C1_v3_1.flac lokey=31 hikey=38 pitch_keycenter=36 lovel=64 hivel=127 loop_start=176400 loop_end=264599 volume=-0.01
+<region> sample=susvib_E1_v1_1.flac lokey=39 hikey=41 pitch_keycenter=40 lovel=1 hivel=63 loop_start=68355 loop_end=156554 volume=-8.77
+<region> sample=susvib_E1_v3_1.flac lokey=39 hikey=41 pitch_keycenter=40 lovel=64 hivel=127 loop_start=97020 loop_end=185219 volume=-1.36
+<region> sample=susvib_G1_v1_1.flac lokey=42 hikey=45 pitch_keycenter=43 lovel=1 hivel=63 loop_start=110250 loop_end=198449 volume=-3.84
+<region> sample=susvib_G1_v3_1.flac lokey=42 hikey=45 pitch_keycenter=43 lovel=64 hivel=127 loop_start=66150 loop_end=154349 volume=-1.24
+<region> sample=susvib_B1_v1_1.flac lokey=46 hikey=48 pitch_keycenter=47 lovel=1 hivel=63 loop_start=143325 loop_end=231524 volume=-4.53
+<region> sample=susvib_B1_v3_1.flac lokey=46 hikey=48 pitch_keycenter=47 lovel=64 hivel=127 loop_start=127890 loop_end=216089 volume=-1.62
+<region> sample=susvib_D2_v1_1.flac lokey=49 hikey=51 pitch_keycenter=50 lovel=1 hivel=63 loop_start=143325 loop_end=231524 volume=-3.06
+<region> sample=susvib_D2_v3_1.flac lokey=49 hikey=51 pitch_keycenter=50 lovel=64 hivel=127 loop_start=66150 loop_end=154349 volume=-0.69
+<region> sample=susvib_F2_v1_1.flac lokey=52 hikey=54 pitch_keycenter=53 lovel=1 hivel=63 loop_start=147735 loop_end=235934 volume=-6.44
+<region> sample=susvib_F2_v3_1.flac lokey=52 hikey=54 pitch_keycenter=53 lovel=64 hivel=127 loop_start=154350 loop_end=242549 volume=-2.34
+<region> sample=VlnEns_susVib_G2_v1.flac lokey=55 hikey=56 pitch_keycenter=55 lovel=1 hivel=63 loop_start=136710 loop_end=224909 volume=-10.82
+<region> sample=VlnEns_susVib_G2_v2.flac lokey=55 hikey=56 pitch_keycenter=55 lovel=64 hivel=127 loop_start=74970 loop_end=163169 volume=-15.69
+<region> sample=VlnEns_susVib_A2_v1.flac lokey=57 hikey=58 pitch_keycenter=57 lovel=1 hivel=63 loop_start=138915 loop_end=227114 volume=-7.84
+<region> sample=VlnEns_susVib_A2_v2.flac lokey=57 hikey=58 pitch_keycenter=57 lovel=64 hivel=127 loop_start=163170 loop_end=251369 volume=-15.37
+<region> sample=VlnEns_susVib_B2_v1.flac lokey=59 hikey=60 pitch_keycenter=59 lovel=1 hivel=63 loop_start=167580 loop_end=255779 volume=-9.44
+<region> sample=VlnEns_susVib_B2_v2.flac lokey=59 hikey=60 pitch_keycenter=59 lovel=64 hivel=127 loop_start=72765 loop_end=160964 volume=-13.11
+<region> sample=VlnEns_susVib_D3_v1.flac lokey=61 hikey=64 pitch_keycenter=62 lovel=1 hivel=63 loop_start=152145 loop_end=240344 volume=-8.28
+<region> sample=VlnEns_susVib_D3_v2.flac lokey=61 hikey=64 pitch_keycenter=62 lovel=64 hivel=127 loop_start=66150 loop_end=154349 volume=-15.64
+<region> sample=VlnEns_susVib_F#3_v1.flac lokey=65 hikey=67 pitch_keycenter=66 lovel=1 hivel=63 loop_start=119070 loop_end=207269 volume=-8.23
+<region> sample=VlnEns_susVib_F#3_v2.flac lokey=65 hikey=67 pitch_keycenter=66 lovel=64 hivel=127 loop_start=99225 loop_end=187424 volume=-13.38
+<region> sample=VlnEns_susVib_A3_v1.flac lokey=68 hikey=70 pitch_keycenter=69 lovel=1 hivel=63 loop_start=147735 loop_end=235934 volume=-5.21
+<region> sample=VlnEns_susVib_A3_v2.flac lokey=68 hikey=70 pitch_keycenter=69 lovel=64 hivel=127 loop_start=167580 loop_end=255779 volume=-13.54
+<region> sample=VlnEns_susVib_C4_v1.flac lokey=71 hikey=74 pitch_keycenter=72 lovel=1 hivel=63 loop_start=163170 loop_end=251369 volume=-4.63
+<region> sample=VlnEns_susVib_C4_v2.flac lokey=71 hikey=74 pitch_keycenter=72 lovel=64 hivel=127 loop_start=143325 loop_end=231524 volume=-8.41
+<region> sample=VlnEns_susVib_E4_v1.flac lokey=75 hikey=77 pitch_keycenter=76 lovel=1 hivel=63 loop_start=116865 loop_end=205064 volume=-10.19
+<region> sample=VlnEns_susVib_E4_v2.flac lokey=75 hikey=77 pitch_keycenter=76 lovel=64 hivel=127 loop_start=99225 loop_end=187424 volume=-13.55
+<region> sample=VlnEns_susVib_G4_v1.flac lokey=78 hikey=81 pitch_keycenter=79 lovel=1 hivel=63 loop_start=105840 loop_end=194039 volume=-7.93
+<region> sample=VlnEns_susVib_G4_v2.flac lokey=78 hikey=81 pitch_keycenter=79 lovel=64 hivel=127 loop_start=169785 loop_end=257984 volume=-10.55
+<region> sample=VlnEns_susVib_B4_v1.flac lokey=82 hikey=84 pitch_keycenter=83 lovel=1 hivel=63 loop_start=141120 loop_end=229319 volume=-11.08
+<region> sample=VlnEns_susVib_B4_v2.flac lokey=82 hikey=84 pitch_keycenter=83 lovel=64 hivel=127 loop_start=66150 loop_end=154349 volume=-13.05
+<region> sample=VlnEns_susVib_D5_v1.flac lokey=85 hikey=93 pitch_keycenter=86 lovel=1 hivel=63 loop_start=108045 loop_end=196244 volume=-7.25
+<region> sample=VlnEns_susVib_D5_v2.flac lokey=85 hikey=93 pitch_keycenter=86 lovel=64 hivel=127 loop_start=119070 loop_end=207269 volume=-9.08

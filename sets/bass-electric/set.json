@@ -1,0 +1,32 @@
+{
+  "name": "Electric Bass",
+  "kind": "instrument",
+  "maker": "Andrea Biasior, for FreePats",
+  "licence": "CC0-1.0",
+  "licence_page": "https://freepats.zenvoid.org/ElectricGuitar/clean-electric-bass.html",
+  "licence_quote": "It was sent for inclusion in FreePats on September 2019, under the terms of the Creative Commons CC0 1.0 public domain dedication.",
+  "source": "FreePats Bass Guitar YR, finger variation, version 2019-09-30 (SFZ + FLAC)",
+  "source_url": "https://github.com/freepats/electric-bass-YR/releases/download/2019-09-30/FingerBassYR-SFZ+FLAC-20190930.7z",
+  "sfz": "bass-electric.sfz",
+  "zones": 12,
+  "keys": [
+    26,
+    45
+  ],
+  "loops": false,
+  "peak_db": -1.01,
+  "files": 12,
+  "size": 1038871,
+  "decoded_size": 8440128,
+  "sample_rates": [
+    44100
+  ],
+  "channels": [
+    1
+  ],
+  "notes": [
+    "the finger-played variation of FreePats' Bass Guitar YR",
+    "each sample faded in from silence over its first 2 ms, or only up to its first moment within 20 dB of its peak when that comes sooner, which keeps the note's own rise, with 2 ms of silence before it, so that every note starts from silence, not on a step (the source's first frames clicked where it starts mid-wave or jumps at once)",
+    "volume lowered by 1.01 dB so a full-velocity note peaks at or below -1 dBFS (its loudest note reaches +0.00 dBFS when resampled)"
+  ]
+}

@@ -1,0 +1,114 @@
+// Acoustic Guitar: part of dawsome-kit, committed as made.
+// From dawsome-kit's acoustic guitar: Karoryfer Shinyguitar's recorded pluck driving a modelled steel string and body; CC0-1.0, see set.json.
+// Uses only the SFZ opcodes Dawsome reads; keys are MIDI numbers (C4 = 60).
+
+<control>
+default_path=samples/
+
+<global>
+seq_length=2
+amp_veltrack=80
+ampeg_release=0.6
+
+<region> sample=db2_v1_rr1.flac lokey=36 hikey=38 pitch_keycenter=37 lovel=1 hivel=42 seq_position=1 volume=-6.34
+<region> sample=db2_v1_rr2.flac lokey=36 hikey=38 pitch_keycenter=37 lovel=1 hivel=42 seq_position=2 volume=-5.86
+<region> sample=db2_v2_rr1.flac lokey=36 hikey=38 pitch_keycenter=37 lovel=43 hivel=84 seq_position=1 volume=-6.61
+<region> sample=db2_v2_rr2.flac lokey=36 hikey=38 pitch_keycenter=37 lovel=43 hivel=84 seq_position=2 volume=-4.51
+<region> sample=db2_v3_rr1.flac lokey=36 hikey=38 pitch_keycenter=37 lovel=85 hivel=127 seq_position=1 volume=-5.44
+<region> sample=db2_v3_rr2.flac lokey=36 hikey=38 pitch_keycenter=37 lovel=85 hivel=127 seq_position=2 volume=-4.53
+<region> sample=e2_v1_rr1.flac lokey=39 hikey=41 pitch_keycenter=40 lovel=1 hivel=42 seq_position=1 volume=-11.61
+<region> sample=e2_v1_rr2.flac lokey=39 hikey=41 pitch_keycenter=40 lovel=1 hivel=42 seq_position=2 volume=-11.62
+<region> sample=e2_v2_rr1.flac lokey=39 hikey=41 pitch_keycenter=40 lovel=43 hivel=84 seq_position=1 volume=-10.82
+<region> sample=e2_v2_rr2.flac lokey=39 hikey=41 pitch_keycenter=40 lovel=43 hivel=84 seq_position=2 volume=-9.55
+<region> sample=e2_v3_rr1.flac lokey=39 hikey=41 pitch_keycenter=40 lovel=85 hivel=127 seq_position=1 volume=-9.67
+<region> sample=e2_v3_rr2.flac lokey=39 hikey=41 pitch_keycenter=40 lovel=85 hivel=127 seq_position=2 volume=-9.57
+<region> sample=gb2_v1_rr1.flac lokey=42 hikey=43 pitch_keycenter=42 lovel=1 hivel=42 seq_position=1 volume=-6.60
+<region> sample=gb2_v1_rr2.flac lokey=42 hikey=43 pitch_keycenter=42 lovel=1 hivel=42 seq_position=2 volume=-8.73
+<region> sample=gb2_v2_rr1.flac lokey=42 hikey=43 pitch_keycenter=42 lovel=43 hivel=84 seq_position=1 volume=-8.02
+<region> sample=gb2_v2_rr2.flac lokey=42 hikey=43 pitch_keycenter=42 lovel=43 hivel=84 seq_position=2 volume=-8.02
+<region> sample=gb2_v3_rr1.flac lokey=42 hikey=43 pitch_keycenter=42 lovel=85 hivel=127 seq_position=1 volume=-6.83
+<region> sample=gb2_v3_rr2.flac lokey=42 hikey=43 pitch_keycenter=42 lovel=85 hivel=127 seq_position=2 volume=-7.97
+<region> sample=a2_v1_rr1.flac lokey=44 hikey=46 pitch_keycenter=45 lovel=1 hivel=42 seq_position=1 volume=-5.66
+<region> sample=a2_v1_rr2.flac lokey=44 hikey=46 pitch_keycenter=45 lovel=1 hivel=42 seq_position=2 volume=-8.28
+<region> sample=a2_v2_rr1.flac lokey=44 hikey=46 pitch_keycenter=45 lovel=43 hivel=84 seq_position=1 volume=-8.21
+<region> sample=a2_v2_rr2.flac lokey=44 hikey=46 pitch_keycenter=45 lovel=43 hivel=84 seq_position=2 volume=-7.69
+<region> sample=a2_v3_rr1.flac lokey=44 hikey=46 pitch_keycenter=45 lovel=85 hivel=127 seq_position=1 volume=-3.57
+<region> sample=a2_v3_rr2.flac lokey=44 hikey=46 pitch_keycenter=45 lovel=85 hivel=127 seq_position=2 volume=-7.73
+<region> sample=c3_v1_rr1.flac lokey=47 hikey=49 pitch_keycenter=48 lovel=1 hivel=42 seq_position=1 volume=-7.81
+<region> sample=c3_v1_rr2.flac lokey=47 hikey=49 pitch_keycenter=48 lovel=1 hivel=42 seq_position=2 volume=-11.94
+<region> sample=c3_v2_rr1.flac lokey=47 hikey=49 pitch_keycenter=48 lovel=43 hivel=84 seq_position=1 volume=-10.93
+<region> sample=c3_v2_rr2.flac lokey=47 hikey=49 pitch_keycenter=48 lovel=43 hivel=84 seq_position=2 volume=-10.56
+<region> sample=c3_v3_rr1.flac lokey=47 hikey=49 pitch_keycenter=48 lovel=85 hivel=127 seq_position=1 volume=-9.42
+<region> sample=c3_v3_rr2.flac lokey=47 hikey=49 pitch_keycenter=48 lovel=85 hivel=127 seq_position=2 volume=-10.42
+<region> sample=eb3_v1_rr1.flac lokey=50 hikey=52 pitch_keycenter=51 lovel=1 hivel=42 seq_position=1 volume=-8.96
+<region> sample=eb3_v1_rr2.flac lokey=50 hikey=52 pitch_keycenter=51 lovel=1 hivel=42 seq_position=2 volume=-7.60
+<region> sample=eb3_v2_rr1.flac lokey=50 hikey=52 pitch_keycenter=51 lovel=43 hivel=84 seq_position=1 volume=-7.66
+<region> sample=eb3_v2_rr2.flac lokey=50 hikey=52 pitch_keycenter=51 lovel=43 hivel=84 seq_position=2 volume=-6.69
+<region> sample=eb3_v3_rr1.flac lokey=50 hikey=52 pitch_keycenter=51 lovel=85 hivel=127 seq_position=1 volume=-7.39
+<region> sample=eb3_v3_rr2.flac lokey=50 hikey=52 pitch_keycenter=51 lovel=85 hivel=127 seq_position=2 volume=-6.95
+<region> sample=gb3_v1_rr1.flac lokey=53 hikey=55 pitch_keycenter=54 lovel=1 hivel=42 seq_position=1 volume=-9.81
+<region> sample=gb3_v1_rr2.flac lokey=53 hikey=55 pitch_keycenter=54 lovel=1 hivel=42 seq_position=2 volume=-6.30
+<region> sample=gb3_v2_rr1.flac lokey=53 hikey=55 pitch_keycenter=54 lovel=43 hivel=84 seq_position=1 volume=-7.58
+<region> sample=gb3_v2_rr2.flac lokey=53 hikey=55 pitch_keycenter=54 lovel=43 hivel=84 seq_position=2 volume=-7.06
+<region> sample=gb3_v3_rr1.flac lokey=53 hikey=55 pitch_keycenter=54 lovel=85 hivel=127 seq_position=1 volume=-6.07
+<region> sample=gb3_v3_rr2.flac lokey=53 hikey=55 pitch_keycenter=54 lovel=85 hivel=127 seq_position=2 volume=-6.93
+<region> sample=a3_v1_rr1.flac lokey=56 hikey=58 pitch_keycenter=57 lovel=1 hivel=42 seq_position=1 volume=-9.17
+<region> sample=a3_v1_rr2.flac lokey=56 hikey=58 pitch_keycenter=57 lovel=1 hivel=42 seq_position=2 volume=-8.40
+<region> sample=a3_v2_rr1.flac lokey=56 hikey=58 pitch_keycenter=57 lovel=43 hivel=84 seq_position=1 volume=-7.97
+<region> sample=a3_v2_rr2.flac lokey=56 hikey=58 pitch_keycenter=57 lovel=43 hivel=84 seq_position=2 volume=-8.21
+<region> sample=a3_v3_rr1.flac lokey=56 hikey=58 pitch_keycenter=57 lovel=85 hivel=127 seq_position=1 volume=-3.57
+<region> sample=a3_v3_rr2.flac lokey=56 hikey=58 pitch_keycenter=57 lovel=85 hivel=127 seq_position=2 volume=-8.24
+<region> sample=c4_v1_rr1.flac lokey=59 hikey=61 pitch_keycenter=60 lovel=1 hivel=42 seq_position=1 volume=-11.44
+<region> sample=c4_v1_rr2.flac lokey=59 hikey=61 pitch_keycenter=60 lovel=1 hivel=42 seq_position=2 volume=-10.65
+<region> sample=c4_v2_rr1.flac lokey=59 hikey=61 pitch_keycenter=60 lovel=43 hivel=84 seq_position=1 volume=-10.82
+<region> sample=c4_v2_rr2.flac lokey=59 hikey=61 pitch_keycenter=60 lovel=43 hivel=84 seq_position=2 volume=-8.70
+<region> sample=c4_v3_rr1.flac lokey=59 hikey=61 pitch_keycenter=60 lovel=85 hivel=127 seq_position=1 volume=-7.48
+<region> sample=c4_v3_rr2.flac lokey=59 hikey=61 pitch_keycenter=60 lovel=85 hivel=127 seq_position=2 volume=-8.61
+<region> sample=eb4_v1_rr1.flac lokey=62 hikey=64 pitch_keycenter=63 lovel=1 hivel=42 seq_position=1 volume=-8.28
+<region> sample=eb4_v1_rr2.flac lokey=62 hikey=64 pitch_keycenter=63 lovel=1 hivel=42 seq_position=2 volume=-7.88
+<region> sample=eb4_v2_rr1.flac lokey=62 hikey=64 pitch_keycenter=63 lovel=43 hivel=84 seq_position=1 volume=-7.79
+<region> sample=eb4_v2_rr2.flac lokey=62 hikey=64 pitch_keycenter=63 lovel=43 hivel=84 seq_position=2 volume=-7.14
+<region> sample=eb4_v3_rr1.flac lokey=62 hikey=64 pitch_keycenter=63 lovel=85 hivel=127 seq_position=1 volume=-5.42
+<region> sample=eb4_v3_rr2.flac lokey=62 hikey=64 pitch_keycenter=63 lovel=85 hivel=127 seq_position=2 volume=-6.94
+<region> sample=gb4_v1_rr1.flac lokey=65 hikey=67 pitch_keycenter=66 lovel=1 hivel=42 seq_position=1 volume=-9.61
+<region> sample=gb4_v1_rr2.flac lokey=65 hikey=67 pitch_keycenter=66 lovel=1 hivel=42 seq_position=2 volume=-8.05
+<region> sample=gb4_v2_rr1.flac lokey=65 hikey=67 pitch_keycenter=66 lovel=43 hivel=84 seq_position=1 volume=-8.12
+<region> sample=gb4_v2_rr2.flac lokey=65 hikey=67 pitch_keycenter=66 lovel=43 hivel=84 seq_position=2 volume=-7.79
+<region> sample=gb4_v3_rr1.flac lokey=65 hikey=67 pitch_keycenter=66 lovel=85 hivel=127 seq_position=1 volume=-7.67
+<region> sample=gb4_v3_rr2.flac lokey=65 hikey=67 pitch_keycenter=66 lovel=85 hivel=127 seq_position=2 volume=-8.03
+<region> sample=a4_v1_rr1.flac lokey=68 hikey=70 pitch_keycenter=69 lovel=1 hivel=42 seq_position=1 volume=-6.28
+<region> sample=a4_v1_rr2.flac lokey=68 hikey=70 pitch_keycenter=69 lovel=1 hivel=42 seq_position=2 volume=-6.83
+<region> sample=a4_v2_rr1.flac lokey=68 hikey=70 pitch_keycenter=69 lovel=43 hivel=84 seq_position=1 volume=-5.90
+<region> sample=a4_v2_rr2.flac lokey=68 hikey=70 pitch_keycenter=69 lovel=43 hivel=84 seq_position=2 volume=-3.03
+<region> sample=a4_v3_rr1.flac lokey=68 hikey=70 pitch_keycenter=69 lovel=85 hivel=127 seq_position=1 volume=-2.36
+<region> sample=a4_v3_rr2.flac lokey=68 hikey=70 pitch_keycenter=69 lovel=85 hivel=127 seq_position=2 volume=-2.49
+<region> sample=c5_v1_rr1.flac lokey=71 hikey=73 pitch_keycenter=72 lovel=1 hivel=42 seq_position=1 volume=-10.86
+<region> sample=c5_v1_rr2.flac lokey=71 hikey=73 pitch_keycenter=72 lovel=1 hivel=42 seq_position=2 volume=-8.80
+<region> sample=c5_v2_rr1.flac lokey=71 hikey=73 pitch_keycenter=72 lovel=43 hivel=84 seq_position=1 volume=-9.12
+<region> sample=c5_v2_rr2.flac lokey=71 hikey=73 pitch_keycenter=72 lovel=43 hivel=84 seq_position=2 volume=-6.67
+<region> sample=c5_v3_rr1.flac lokey=71 hikey=73 pitch_keycenter=72 lovel=85 hivel=127 seq_position=1 volume=-6.61
+<region> sample=c5_v3_rr2.flac lokey=71 hikey=73 pitch_keycenter=72 lovel=85 hivel=127 seq_position=2 volume=-6.73
+<region> sample=eb5_v1_rr1.flac lokey=74 hikey=76 pitch_keycenter=75 lovel=1 hivel=42 seq_position=1 volume=-9.59
+<region> sample=eb5_v1_rr2.flac lokey=74 hikey=76 pitch_keycenter=75 lovel=1 hivel=42 seq_position=2 volume=-7.54
+<region> sample=eb5_v2_rr1.flac lokey=74 hikey=76 pitch_keycenter=75 lovel=43 hivel=84 seq_position=1 volume=-7.37
+<region> sample=eb5_v2_rr2.flac lokey=74 hikey=76 pitch_keycenter=75 lovel=43 hivel=84 seq_position=2 volume=-2.40
+<region> sample=eb5_v3_rr1.flac lokey=74 hikey=76 pitch_keycenter=75 lovel=85 hivel=127 seq_position=1 volume=-3.69
+<region> sample=eb5_v3_rr2.flac lokey=74 hikey=76 pitch_keycenter=75 lovel=85 hivel=127 seq_position=2 volume=-2.88
+<region> sample=gb5_v1_rr1.flac lokey=77 hikey=79 pitch_keycenter=78 lovel=1 hivel=42 seq_position=1 volume=-11.19
+<region> sample=gb5_v1_rr2.flac lokey=77 hikey=79 pitch_keycenter=78 lovel=1 hivel=42 seq_position=2 volume=-6.19
+<region> sample=gb5_v2_rr1.flac lokey=77 hikey=79 pitch_keycenter=78 lovel=43 hivel=84 seq_position=1 volume=-6.08
+<region> sample=gb5_v2_rr2.flac lokey=77 hikey=79 pitch_keycenter=78 lovel=43 hivel=84 seq_position=2 volume=-4.58
+<region> sample=gb5_v3_rr1.flac lokey=77 hikey=79 pitch_keycenter=78 lovel=85 hivel=127 seq_position=1 volume=-2.68
+<region> sample=gb5_v3_rr2.flac lokey=77 hikey=79 pitch_keycenter=78 lovel=85 hivel=127 seq_position=2 volume=-4.34
+<region> sample=a5_v1_rr1.flac lokey=80 hikey=82 pitch_keycenter=81 lovel=1 hivel=42 seq_position=1 volume=-8.46
+<region> sample=a5_v1_rr2.flac lokey=80 hikey=82 pitch_keycenter=81 lovel=1 hivel=42 seq_position=2 volume=-6.28
+<region> sample=a5_v2_rr1.flac lokey=80 hikey=82 pitch_keycenter=81 lovel=43 hivel=84 seq_position=1 volume=-5.85
+<region> sample=a5_v2_rr2.flac lokey=80 hikey=82 pitch_keycenter=81 lovel=43 hivel=84 seq_position=2 volume=-2.99
+<region> sample=a5_v3_rr1.flac lokey=80 hikey=82 pitch_keycenter=81 lovel=85 hivel=127 seq_position=1 volume=-0.01
+<region> sample=a5_v3_rr2.flac lokey=80 hikey=82 pitch_keycenter=81 lovel=85 hivel=127 seq_position=2 volume=-3.17
+<region> sample=c6_v1_rr1.flac lokey=83 hikey=88 pitch_keycenter=84 lovel=1 hivel=42 seq_position=1 volume=-8.16
+<region> sample=c6_v1_rr2.flac lokey=83 hikey=88 pitch_keycenter=84 lovel=1 hivel=42 seq_position=2 volume=-9.24
+<region> sample=c6_v2_rr1.flac lokey=83 hikey=88 pitch_keycenter=84 lovel=43 hivel=84 seq_position=1 volume=-8.27
+<region> sample=c6_v2_rr2.flac lokey=83 hikey=88 pitch_keycenter=84 lovel=43 hivel=84 seq_position=2 volume=-8.82
+<region> sample=c6_v3_rr1.flac lokey=83 hikey=88 pitch_keycenter=84 lovel=85 hivel=127 seq_position=1 volume=-8.19
+<region> sample=c6_v3_rr2.flac lokey=83 hikey=88 pitch_keycenter=84 lovel=85 hivel=127 seq_position=2 volume=-8.82

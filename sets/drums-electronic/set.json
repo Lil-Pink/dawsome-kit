@@ -1,0 +1,37 @@
+{
+  "name": "Electronic Drums",
+  "kind": "instrument",
+  "maker": "Sonic Pi contributors; each sound's Freesound uploader (listed in etc/samples/README.md)",
+  "licence": "CC0-1.0",
+  "licence_page": "https://github.com/sonic-pi-net/sonic-pi/blob/df6f17e4625b0451fa2af8accf2e1e641c7ad458/LICENSE.md",
+  "licence_quote": "All the bundled samples are individually licensed under a CC0 1.0 Universal Public Domain Dedication. They have been obtained from freesound.org and links to their sources can be found in the file etc/samples/README.md",
+  "source": "Sonic Pi sample set (etc/samples), at a pinned commit of the dev branch",
+  "source_url": "https://github.com/sonic-pi-net/sonic-pi/tree/df6f17e4625b0451fa2af8accf2e1e641c7ad458",
+  "sfz": "drums-electronic.sfz",
+  "zones": 37,
+  "keys": [
+    24,
+    60
+  ],
+  "loops": false,
+  "peak_db": -1.01,
+  "files": 37,
+  "size": 847867,
+  "decoded_size": 4007552,
+  "sample_rates": [
+    44100,
+    96000,
+    192000
+  ],
+  "channels": [
+    1,
+    2
+  ],
+  "notes": [
+    "one sound per key from key 24 (C1): kicks (bd_), then snares (sn_), then hi-hats (hat_), each group in name order; each plays at its own pitch to its end",
+    "samples are Sonic Pi's FLAC files, each faded in from silence over its first 2 ms, or only up to its first moment within 20 dB of its peak when that comes sooner, which keeps the note's own rise, with 2 ms of silence before it, so that every note starts from silence, not on a step (the source's first frames clicked where it starts mid-wave or jumps at once); rounded back to 16 bits without dither, so every sample after the fade is as recorded",
+    "hat_gnu is its left channel alone, a mono file: its other channel is the same sound upside down (L/R correlation -1.00), so the two canceled when summed to mono (26 dB down)",
+    "left out after reading each sound's Freesound page: bd_jazz: 'Sound from Figure app' (a commercial app's sound); hat_bdu: from the fdiskc.com TR-606 sample set, says its page; hat_noiz: 'That HiHat that was in that Tron song Daft Punk made'; elec_*: one uploader's compilation whose file names point to other products (E-mu SP-12 sounds, another DAW's content, a 'virus kit'); all 25 left out",
+    "volume lowered by 3.21 dB so a full-velocity note peaks at or below -1 dBFS (its loudest note reaches +2.20 dBFS when resampled)"
+  ]
+}

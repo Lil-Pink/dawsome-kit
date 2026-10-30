@@ -1,0 +1,20 @@
+// Synth Bass: part of dawsome-kit, written by build.py.
+// From FreePats Synth Bass #2, version 2021-04-05 (SFZ + FLAC); CC0-1.0, see set.json.
+// Uses only the SFZ opcodes Dawsome reads; keys are MIDI numbers (C4 = 60).
+
+<control>
+default_path=samples/
+
+<global>
+volume=-1.37
+ampeg_release=0.5
+
+<region> sample=C2.flac lokey=28 hikey=38 pitch_keycenter=36
+<region> sample=F#2.flac lokey=39 hikey=44 pitch_keycenter=42
+<region> sample=C3.flac lokey=45 hikey=50 pitch_keycenter=48
+<region> sample=F#3.flac lokey=51 hikey=56 pitch_keycenter=54
+<region> sample=C4.flac lokey=57 hikey=62 pitch_keycenter=60
+<region> sample=F#4.flac lokey=63 hikey=68 pitch_keycenter=66
+<region> sample=C5.flac lokey=69 hikey=74 pitch_keycenter=72
+<region> sample=F#5.flac lokey=75 hikey=80 pitch_keycenter=78
+<region> sample=C6.flac lokey=81 hikey=88 pitch_keycenter=84

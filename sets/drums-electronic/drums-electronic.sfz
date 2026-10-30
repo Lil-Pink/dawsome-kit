@@ -1,0 +1,48 @@
+// Electronic Drums: part of dawsome-kit, written by build.py.
+// From Sonic Pi sample set (etc/samples), at a pinned commit of the dev branch; CC0-1.0, see set.json.
+// Uses only the SFZ opcodes Dawsome reads; keys are MIDI numbers (C4 = 60).
+
+<control>
+default_path=samples/
+
+<global>
+loop_mode=one_shot
+volume=-3.21
+
+<region> sample=bd_808.flac lokey=24 hikey=24 pitch_keycenter=24
+<region> sample=bd_ada.flac lokey=25 hikey=25 pitch_keycenter=25
+<region> sample=bd_boom.flac lokey=26 hikey=26 pitch_keycenter=26
+<region> sample=bd_chip.flac lokey=27 hikey=27 pitch_keycenter=27
+<region> sample=bd_fat.flac lokey=28 hikey=28 pitch_keycenter=28
+<region> sample=bd_gas.flac lokey=29 hikey=29 pitch_keycenter=29
+<region> sample=bd_haus.flac lokey=30 hikey=30 pitch_keycenter=30
+<region> sample=bd_klub.flac lokey=31 hikey=31 pitch_keycenter=31
+<region> sample=bd_mehackit.flac lokey=32 hikey=32 pitch_keycenter=32
+<region> sample=bd_pure.flac lokey=33 hikey=33 pitch_keycenter=33
+<region> sample=bd_sone.flac lokey=34 hikey=34 pitch_keycenter=34
+<region> sample=bd_tek.flac lokey=35 hikey=35 pitch_keycenter=35
+<region> sample=bd_zome.flac lokey=36 hikey=36 pitch_keycenter=36
+<region> sample=bd_zum.flac lokey=37 hikey=37 pitch_keycenter=37
+<region> sample=sn_dolf.flac lokey=38 hikey=38 pitch_keycenter=38
+<region> sample=sn_dub.flac lokey=39 hikey=39 pitch_keycenter=39
+<region> sample=sn_generic.flac lokey=40 hikey=40 pitch_keycenter=40
+<region> sample=sn_zome.flac lokey=41 hikey=41 pitch_keycenter=41
+<region> sample=hat_cab.flac lokey=42 hikey=42 pitch_keycenter=42
+<region> sample=hat_cats.flac lokey=43 hikey=43 pitch_keycenter=43
+<region> sample=hat_gem.flac lokey=44 hikey=44 pitch_keycenter=44
+<region> sample=hat_gnu.flac lokey=45 hikey=45 pitch_keycenter=45
+<region> sample=hat_gump.flac lokey=46 hikey=46 pitch_keycenter=46
+<region> sample=hat_hier.flac lokey=47 hikey=47 pitch_keycenter=47
+<region> sample=hat_len.flac lokey=48 hikey=48 pitch_keycenter=48
+<region> sample=hat_mess.flac lokey=49 hikey=49 pitch_keycenter=49
+<region> sample=hat_metal.flac lokey=50 hikey=50 pitch_keycenter=50
+<region> sample=hat_psych.flac lokey=51 hikey=51 pitch_keycenter=51
+<region> sample=hat_raw.flac lokey=52 hikey=52 pitch_keycenter=52
+<region> sample=hat_sci.flac lokey=53 hikey=53 pitch_keycenter=53
+<region> sample=hat_snap.flac lokey=54 hikey=54 pitch_keycenter=54
+<region> sample=hat_star.flac lokey=55 hikey=55 pitch_keycenter=55
+<region> sample=hat_tap.flac lokey=56 hikey=56 pitch_keycenter=56
+<region> sample=hat_yosh.flac lokey=57 hikey=57 pitch_keycenter=57
+<region> sample=hat_zan.flac lokey=58 hikey=58 pitch_keycenter=58
+<region> sample=hat_zap.flac lokey=59 hikey=59 pitch_keycenter=59
+<region> sample=hat_zild.flac lokey=60 hikey=60 pitch_keycenter=60

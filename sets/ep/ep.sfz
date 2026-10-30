@@ -1,0 +1,47 @@
+// Electric Piano: part of dawsome-kit, written by build.py.
+// From FreePats FM Synthesized Piano #1, version 2019-09-16 (SFZ + FLAC); CC0-1.0, see set.json.
+// Uses only the SFZ opcodes Dawsome reads; keys are MIDI numbers (C4 = 60).
+
+<control>
+default_path=samples/
+
+<global>
+volume=-1.28
+ampeg_release=0.4
+
+<region> sample=F#1v60.flac lokey=27 hikey=32 pitch_keycenter=30 hivel=69
+<region> sample=C2v60.flac lokey=33 hikey=38 pitch_keycenter=36 hivel=69
+<region> sample=F#2v60.flac lokey=39 hikey=44 pitch_keycenter=42 hivel=69
+<region> sample=C3v60.flac lokey=45 hikey=50 pitch_keycenter=48 hivel=69
+<region> sample=F#3v60.flac lokey=51 hikey=56 pitch_keycenter=54 hivel=69
+<region> sample=C4v60.flac lokey=57 hikey=62 pitch_keycenter=60 hivel=69
+<region> sample=F#4v60.flac lokey=63 hikey=68 pitch_keycenter=66 hivel=69
+<region> sample=C5v60.flac lokey=69 hikey=74 pitch_keycenter=72 hivel=69
+<region> sample=F#5v60.flac lokey=75 hikey=80 pitch_keycenter=78 hivel=69
+<region> sample=C6v60.flac lokey=81 hikey=86 pitch_keycenter=84 hivel=69
+<region> sample=F#6v60.flac lokey=87 hikey=92 pitch_keycenter=90 hivel=69
+<region> sample=C7v60.flac lokey=93 hikey=98 pitch_keycenter=96 hivel=69
+<region> sample=F#1v80.flac lokey=27 hikey=32 pitch_keycenter=30 lovel=70 hivel=109
+<region> sample=C2v80.flac lokey=33 hikey=38 pitch_keycenter=36 lovel=70 hivel=109
+<region> sample=F#2v80.flac lokey=39 hikey=44 pitch_keycenter=42 lovel=70 hivel=109
+<region> sample=C3v80.flac lokey=45 hikey=50 pitch_keycenter=48 lovel=70 hivel=109
+<region> sample=F#3v80.flac lokey=51 hikey=56 pitch_keycenter=54 lovel=70 hivel=109
+<region> sample=C4v80.flac lokey=57 hikey=62 pitch_keycenter=60 lovel=70 hivel=109
+<region> sample=F#4v80.flac lokey=63 hikey=68 pitch_keycenter=66 lovel=70 hivel=109
+<region> sample=C5v80.flac lokey=69 hikey=74 pitch_keycenter=72 lovel=70 hivel=109
+<region> sample=F#5v80.flac lokey=75 hikey=80 pitch_keycenter=78 lovel=70 hivel=109
+<region> sample=C6v80.flac lokey=81 hikey=86 pitch_keycenter=84 lovel=70 hivel=109
+<region> sample=F#6v80.flac lokey=87 hikey=92 pitch_keycenter=90 lovel=70 hivel=109
+<region> sample=C7v80.flac lokey=93 hikey=98 pitch_keycenter=96 lovel=70 hivel=109
+<region> sample=F#1v100.flac lokey=27 hikey=32 pitch_keycenter=30 lovel=110
+<region> sample=C2v100.flac lokey=33 hikey=38 pitch_keycenter=36 lovel=110
+<region> sample=F#2v100.flac lokey=39 hikey=44 pitch_keycenter=42 lovel=110
+<region> sample=C3v100.flac lokey=45 hikey=50 pitch_keycenter=48 lovel=110
+<region> sample=F#3v100.flac lokey=51 hikey=56 pitch_keycenter=54 lovel=110
+<region> sample=C4v100.flac lokey=57 hikey=62 pitch_keycenter=60 lovel=110
+<region> sample=F#4v100.flac lokey=63 hikey=68 pitch_keycenter=66 lovel=110
+<region> sample=C5v100.flac lokey=69 hikey=74 pitch_keycenter=72 lovel=110
+<region> sample=F#5v100.flac lokey=75 hikey=80 pitch_keycenter=78 lovel=110
+<region> sample=C6v100.flac lokey=81 hikey=86 pitch_keycenter=84 lovel=110
+<region> sample=F#6v100.flac lokey=87 hikey=92 pitch_keycenter=90 lovel=110
+<region> sample=C7v100.flac lokey=93 hikey=98 pitch_keycenter=96 lovel=110

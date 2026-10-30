@@ -1,0 +1,34 @@
+{
+  "name": "Electric Piano",
+  "kind": "instrument",
+  "category": "Keys",
+  "maker": "Roberto, for FreePats, recorded from the Hexter synthesizer (the Yamaha DX7's 'E. Piano 1' patch)",
+  "licence": "CC0-1.0",
+  "licence_page": "https://freepats.zenvoid.org/ElectricPiano/synthesized-piano.html",
+  "licence_quote": "Published under the terms of the Creative Commons CC0 1.0 public domain dedication.",
+  "source": "FreePats FM Synthesized Piano #1, version 2019-09-16 (SFZ + FLAC)",
+  "source_url": "https://github.com/freepats/fm-piano1/releases/download/2019-09-16/FM-Piano1-SFZ+FLAC-20190916.7z",
+  "sfz": "ep.sfz",
+  "zones": 36,
+  "keys": [
+    27,
+    98
+  ],
+  "loops": false,
+  "peak_db": -1.01,
+  "files": 36,
+  "size": 8964806,
+  "decoded_size": 87555240,
+  "sample_rates": [
+    44100
+  ],
+  "channels": [
+    1
+  ],
+  "notes": [
+    "FreePats' FM Synthesized Piano #1: the Yamaha DX7's 'E. Piano 1' patch, the FM electric piano of many 1980s songs, recorded from the Hexter synthesizer, a model of the DX7",
+    "FreePats' own mapping, unchanged: 12 notes a tritone apart from F#1 to C7, spread over keys 27-98, three velocity layers (1-69, 70-109, 110-127) recorded at velocities 60, 80 and 100, each sample at full scale; the default amp_veltrack=100 makes velocity the loudness, as in the source; ampeg_release=0.4, the source's",
+    "the 24-bit samples are stored as 16-bit FLAC (triangular dither), otherwise unchanged: each starts from silence, and its tail falls into the dither, about 96 dB under its peak (the source's last 20 ms are 100 to 130 dB down)",
+    "volume lowered by 1.28 dB so a full-velocity note peaks at or below -1 dBFS (its loudest note reaches +0.27 dBFS when resampled)"
+  ]
+}

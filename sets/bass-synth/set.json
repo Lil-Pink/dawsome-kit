@@ -1,0 +1,31 @@
+{
+  "name": "Synth Bass",
+  "kind": "instrument",
+  "maker": "FreePats, recorded from the Hexter synthesizer",
+  "licence": "CC0-1.0",
+  "licence_page": "https://freepats.zenvoid.org/Synthesizer/synth-bass.html",
+  "licence_quote": "Published under the terms of the Creative Commons CC0 1.0 public domain dedication.",
+  "source": "FreePats Synth Bass #2, version 2021-04-05 (SFZ + FLAC)",
+  "source_url": "https://github.com/freepats/synth-bass-2/releases/download/2021-04-05/SynthBass2-SFZ+FLAC-20210405.7z",
+  "sfz": "bass-synth.sfz",
+  "zones": 9,
+  "keys": [
+    28,
+    88
+  ],
+  "loops": false,
+  "peak_db": -1.01,
+  "files": 9,
+  "size": 936354,
+  "decoded_size": 9266688,
+  "sample_rates": [
+    44100
+  ],
+  "channels": [
+    1
+  ],
+  "notes": [
+    "FreePats' Synth Bass #2, a DX7 'BASS 1' style sound",
+    "volume lowered by 1.37 dB so a full-velocity note peaks at or below -1 dBFS (its loudest note reaches +0.36 dBFS when resampled)"
+  ]
+}

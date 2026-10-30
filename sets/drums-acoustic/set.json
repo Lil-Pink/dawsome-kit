@@ -1,0 +1,38 @@
+{
+  "name": "Acoustic Drums",
+  "kind": "instrument",
+  "maker": "Karoryfer Samples",
+  "licence": "CC0-1.0",
+  "licence_page": "https://github.com/sfzinstruments/karoryfer.big-rusty-drums/blob/f07ce00df34a46b6b08375be56fe116cf15782bc/LICENSE",
+  "licence_quote": "Creative Commons Legal Code / CC0 1.0 Universal ... 2. Waiver. To the greatest extent permitted by, but not in contravention of, applicable law, Affirmer hereby overtly, fully, permanently, irrevocably and unconditionally waives, abandons, and surrenders all of Affirmer's Copyright and Related Rights and associated claims and causes of action",
+  "source": "Karoryfer Big Rusty Drums, stick hits, close and overhead microphones, at a pinned commit",
+  "source_url": "https://github.com/sfzinstruments/karoryfer.big-rusty-drums/tree/f07ce00df34a46b6b08375be56fe116cf15782bc",
+  "sfz": "drums-acoustic.sfz",
+  "zones": 84,
+  "keys": [
+    36,
+    53
+  ],
+  "loops": false,
+  "peak_db": -1.01,
+  "files": 84,
+  "size": 9776167,
+  "decoded_size": 54498204,
+  "sample_rates": [
+    44100
+  ],
+  "channels": [
+    1,
+    2
+  ],
+  "notes": [
+    "Karoryfer's Big Rusty Drums played with sticks: its 24\" kick, 14\" snare, 18\" and 14\" toms, 14\" hi-hat, 17\" crash and 22\" ride; keys as the set had them, the General MIDI drum map's: 36 kick, 37 cross-stick, 38 snare, 40 rimshot, 41 low tom (18\"), 42 closed hi-hat, 44 pedal hi-hat, 46 open hi-hat, 48 high tom (14\"), 49 crash, 51 ride, 53 ride bell",
+    "each hit is the library's own mix of its microphones at its basic program's defaults (Programs/02-basic.sfz), baked into one sample: the kick its inside mic alone; the snare its bottom, top and overhead mics at 100, 40 and 60 of 127; a tom its close mic at 100 of 127 (the 18\" panned to +0.38, the 14\" to -0.68) and the overheads at 70; the hi-hat both at 70 % of 100/127; the crash its close mic at 70 % of 40/127 (panned -0.52) and overheads at 70 % of 100/127, the ride and bell the same at 60 % (close mic +0.53); a close mic is placed by Dawsome's pan law for a mono zone, the overheads keep their own image",
+    "four of the recorded velocity layers, spread evenly up to the loudest, over equal velocity shares; two round robins (seq_length=2), the first two (the sidestick's loudest layer its second and third: its first was cut a moment into the hit), one for the open hi-hat, the crash and the bell",
+    "amp_veltrack=0: loudness follows the recorded layers (the source's per-layer amp_velcurve, outside the subset, is dropped)",
+    "every hit faded in from silence over its first 2 ms, or only up to its first moment within 20 dB of its peak when that comes sooner, which keeps the note's own rise, with 2 ms of silence before it, so that every note starts from silence, not on a step (the source's first frames clicked where it starts mid-wave or jumps at once); then drums and the closed and pedal hi-hats cut where it stays 60 dB under its peak; open hi-hat: cut at 3 s at most, fading out over the last 1 s; crash: cut at 5 s at most, fading out over the last 2 s; ride and bell: cut at 4 s at most, fading out over the last 1.5 s",
+    "the open hi-hat is not choked by the closed or pedal hi-hat (the source's group and off_by are outside the subset)",
+    "each sample is normalized to -1 dBFS before the cut to 16 bits, and its region's volume puts it back at its recorded level against the loudest sample of the set",
+    "volume lowered by 0.01 dB so a full-velocity note peaks at or below -1 dBFS (its loudest note reaches -1.00 dBFS when resampled)"
+  ]
+}

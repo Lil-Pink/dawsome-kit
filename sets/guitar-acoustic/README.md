@@ -1,0 +1,33 @@
+# Acoustic Guitar
+
+An instrument set of dawsome-kit, committed as made: `guitar-acoustic.sfz` plays the sounds in `samples/` on keys 36 to 88 (MIDI numbers, C4 = 60).
+
+## Source
+
+- dawsome-kit's acoustic guitar: Karoryfer Shinyguitar's recorded pluck driving a modelled steel string and body
+- Made by: dawsome-kit, from Karoryfer Shinyguitar's recorded archtop (CC0, played by D. Smolken) and the kit's modelled steel string and body
+- From: this repository, committed as made
+- Recordings: Karoryfer Shinyguitar v1.002, microphone samples, at a pinned commit; made by Karoryfer Samples: an archtop guitar played and mapped by D. Smolken; https://github.com/sfzinstruments/karoryfer.shinyguitar/tree/57243cca85277dbcc120ce17c6178032f93c80f3
+
+## License
+
+CC0 1.0 Universal, a public domain dedication: use, change, sell and share these sounds, in songs or in software, with no credit due.
+
+- License page: https://creativecommons.org/publicdomain/zero/1.0/
+- It says: "No Copyright. The person who associated a work with this deed has dedicated the work to the public domain by waiving all of his or her rights to the work worldwide under copyright law"
+- Note: a fusion of two CC0 works: the pluck comes from Karoryfer Shinyguitar's microphone samples (sources.json karoryfer-shinyguitar; its author, D. Smolken, put the CC0 1.0 legal code in its repository on 2022-11-04), the string and body from a model made for the kit; the fusion is dedicated CC0 1.0. Each sample's MANIFEST.json entry names the recording it was made from (made_from)
+- The recordings' license page: https://github.com/sfzinstruments/karoryfer.shinyguitar/blob/57243cca85277dbcc120ce17c6178032f93c80f3/LICENSE
+
+The changes made here (conversion, trimming, mapping) are dedicated CC0 too. `set.json` holds the same facts with the set's figures, and the kit's `MANIFEST.json` traces every file to its source and SHA-256.
+
+## How it was made
+
+- a steel-string acoustic guitar made from a real pluck and a modelled string: the pluck (the pick, the fingers and the wooden body's first ring) comes from Karoryfer Shinyguitar's microphone recordings of an archtop guitar; the string that rings on after it, and the body it rings through, are modelled. The notes were made from the karoryfer-shinyguitar download and are committed as made
+- chosen by ear on 2026-10-26 from three ways of fusing the recording with a model: the archtop alone (the first build) had a real guitar's body and string feel but too much twang, like a banjo; the model alone sounded soft but synthesized
+- how a note is made: the recorded note is run through the inverse of a string at its measured pitch, which takes the string's own tone out and leaves the pluck; its first 100 ms (faded out over 40 ms more), with the twang band, 1.5-3.5 kHz, 6 dB down (a peaking dip at 2.4 kHz, Q 0.7), plus a modelled pick low-passed at 350 Hz and as loud as it (the fundamental the archtop lacks), together pluck two slightly detuned modelled strings whose highs die sooner than their lows (a 9-tap loop filter: the low E's partials around 1 kHz ring about 3 s, the archtop's 1.5 s), heard through a modelled body's resonances at 102, 204 and 395 Hz
+- 17 notes a minor third apart from C#2 to C6, spread over keys 36-88; three velocity layers (1-42, 43-84, 85-127: harder is brighter); two round robins per note (seq_length=2), each made from a different recorded layer of the archtop (soft: its layers 1 and 2; middle: 2 and 3; hard: 4 and 3) and pitched 0.6 cents flat or 0.5 sharp
+- amp_veltrack=80; ampeg_release=0.6
+- each sample cut where it stays 60 dB under its peak, cut at 6 s at most, fading out over the last 1.5 s
+- the C3 and E2 notes swell: their loudest moment comes 119 to 146 ms after the pluck in every layer (90 of the other 96 samples' within 60 ms), the model's own response at those pitches, kept
+- each sample is normalized to -1 dBFS before the cut to 16 bits, and its region's volume brings it to one loudness for the whole set (the loudest 400 ms of each sample, EBU R128 momentary loudness): every key and layer plays equally loud and amp_veltrack alone turns velocity into loudness, so soft to loud is continuous across the layers, whose sound still changes with velocity; 1 of 102 samples, too sharp to reach it under -1 dBFS, play up to 2 dB under it
+- volume lowered by 0.01 dB so a full-velocity note peaks at or below -1 dBFS (its loudest note reaches -0.99 dBFS when resampled)

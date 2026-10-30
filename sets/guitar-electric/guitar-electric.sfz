@@ -1,0 +1,40 @@
+// Electric Guitar: part of dawsome-kit, written by build.py.
+// From FreePats FSBS Electric Guitar Clean #1, version 2026-08-07, bridge pickup (SFZ + FLAC); CC0-1.0, see set.json.
+// Uses only the SFZ opcodes Dawsome reads; keys are MIDI numbers (C4 = 60).
+
+<control>
+default_path=samples/
+
+<global>
+ampeg_release=0.3
+
+<region> sample=C2_s1_soft_01.flac lokey=35 hikey=38 pitch_keycenter=36 hivel=92 volume=-6.23
+<region> sample=C2_s1_01.flac lokey=35 hikey=38 pitch_keycenter=36 lovel=93 volume=-5.06
+<region> sample=E2_s1_soft_01.flac lokey=39 hikey=40 pitch_keycenter=40 hivel=92 volume=-3.40
+<region> sample=E2_s1_01.flac lokey=39 hikey=40 pitch_keycenter=40 lovel=93 volume=-2.80
+<region> sample=F2_s1_soft_01.flac lokey=41 hikey=42 pitch_keycenter=41 hivel=92 volume=-2.77
+<region> sample=F2_s1_01.flac lokey=41 hikey=42 pitch_keycenter=41 lovel=93 volume=-3.92
+<region> sample=A2_s2_soft_01.flac lokey=43 hikey=46 pitch_keycenter=45 hivel=92 volume=-5.88
+<region> sample=A2_s2_01.flac lokey=43 hikey=46 pitch_keycenter=45 lovel=93 volume=-1.86
+<region> sample=C3_s2_soft_01.flac lokey=47 hikey=49 pitch_keycenter=48 hivel=92 volume=-6.41
+<region> sample=C3_s2_01.flac lokey=47 hikey=49 pitch_keycenter=48 lovel=93 volume=-3.13
+<region> sample=D3_s3_soft_01.flac lokey=50 hikey=51 pitch_keycenter=50 hivel=92 volume=-6.15
+<region> sample=D3_s3_01.flac lokey=50 hikey=51 pitch_keycenter=50 lovel=93 volume=-3.01
+<region> sample=E3_s3_soft_01.flac lokey=52 hikey=53 pitch_keycenter=52 hivel=92 volume=-2.68
+<region> sample=E3_s3_01.flac lokey=52 hikey=53 pitch_keycenter=52 lovel=93 volume=-2.25
+<region> sample=G3_s4_soft_01.flac lokey=54 hikey=56 pitch_keycenter=55 hivel=92 volume=-4.60
+<region> sample=G3_s4_01.flac lokey=54 hikey=56 pitch_keycenter=55 lovel=93 volume=-1.01
+<region> sample=B3_s5_soft_01.flac lokey=57 hikey=59 pitch_keycenter=59 hivel=92 volume=-3.74
+<region> sample=B3_s5_01.flac lokey=57 hikey=59 pitch_keycenter=59 lovel=93 volume=-0.54
+<region> sample=C#4_s5_soft_01.flac lokey=60 hikey=62 pitch_keycenter=61 hivel=92 volume=-0.66
+<region> sample=C#4_s5_01.flac lokey=60 hikey=62 pitch_keycenter=61 lovel=93 volume=-0.03
+<region> sample=E4_s6_soft_01.flac lokey=63 hikey=65 pitch_keycenter=64 hivel=92 volume=-1.63
+<region> sample=E4_s6_01.flac lokey=63 hikey=65 pitch_keycenter=64 lovel=93 volume=-1.48
+<region> sample=G4_s6_01.flac lokey=66 hikey=69 pitch_keycenter=67 volume=-3.69
+<region> sample=B4_s6_01.flac lokey=70 hikey=71 pitch_keycenter=71 volume=-0.47
+<region> sample=C5_s6_01.flac lokey=72 hikey=72 pitch_keycenter=72 volume=-1.68
+<region> sample=D5_s6_01.flac lokey=73 hikey=75 pitch_keycenter=74 volume=-3.11
+<region> sample=F5_s6_01.flac lokey=76 hikey=78 pitch_keycenter=77 volume=-4.56
+<region> sample=G#5_s6_01.flac lokey=79 hikey=81 pitch_keycenter=80 volume=-2.57
+<region> sample=A#5_s6_01.flac lokey=82 hikey=83 pitch_keycenter=82 volume=-3.87
+<region> sample=C#6_s6_01.flac lokey=84 hikey=86 pitch_keycenter=85 volume=-2.99

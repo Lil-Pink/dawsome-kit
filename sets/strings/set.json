@@ -1,0 +1,34 @@
+{
+  "name": "Strings",
+  "kind": "instrument",
+  "maker": "Versilian Studios LLC (Sam Gossner) and Simon Dalzell",
+  "licence": "CC0-1.0",
+  "licence_page": "https://versilian-studios.com/vsco-community/",
+  "licence_quote": "The library is under a Creative Commons 0 (i.e. public domain) license. That's right, you can download 3 GB of samples for free with no rules, no royalties, no limits on how or when you can use it",
+  "source": "VS Chamber Orchestra 2: Community Edition (raw WAV), at a pinned commit",
+  "source_url": "https://github.com/sgossner/VSCO-2-CE/tree/440300901dfe9275fd84e0b7763af1f8443ae62e",
+  "sfz": "strings.sfz",
+  "zones": 34,
+  "keys": [
+    31,
+    93
+  ],
+  "loops": true,
+  "peak_db": -1.0,
+  "files": 34,
+  "size": 15834006,
+  "decoded_size": 57732192,
+  "sample_rates": [
+    44100
+  ],
+  "channels": [
+    2
+  ],
+  "notes": [
+    "cello section sustains (vibrato) for keys 31-54, violin section sustains for 55-93; two velocity layers each (soft 1-63, loud 64-127)",
+    "held notes loop: a 2 s loop made by build.py, starting between 1.5 s and 4 s where the level holds steadiest, with a 1 s level-keeping crossfade; the sample runs 10 ms past the loop's end with the loop's own start, which is what the DAW's resampling reads across the seam (a file ending at the loop's end bent the sound before every jump back: a click)",
+    "VSCO names notes with C3 = MIDI 60; keys here are MIDI numbers",
+    "each sample is normalized to -1 dBFS before the cut to 16 bits, and its region's volume puts it back at its recorded level against the loudest sample of its velocity layer",
+    "volume lowered by 0.01 dB so a full-velocity note peaks at or below -1 dBFS (its loudest note reaches -0.99 dBFS when resampled)"
+  ]
+}

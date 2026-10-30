@@ -1,0 +1,33 @@
+{
+  "name": "Drawbar Organ",
+  "kind": "instrument",
+  "maker": "Roberto, for FreePats, recorded from the setBfree synthesizer",
+  "licence": "CC0-1.0",
+  "licence_page": "https://freepats.zenvoid.org/Organ/electric-organ.html",
+  "licence_quote": "Published under the terms of the Creative Commons CC0 1.0 public domain dedication.",
+  "source": "FreePats Drawbar organ emulation, version 2019-07-12 (SFZ + WAV)",
+  "source_url": "https://freepats.zenvoid.org/Organ/DrawbarOrganEmulation/DrawbarOrganEmulation-SFZ-20190712.tar.xz",
+  "sfz": "organ.sfz",
+  "zones": 16,
+  "keys": [
+    33,
+    98
+  ],
+  "loops": true,
+  "peak_db": -10.38,
+  "files": 16,
+  "size": 1904901,
+  "decoded_size": 13004680,
+  "sample_rates": [
+    44100
+  ],
+  "channels": [
+    1
+  ],
+  "notes": [
+    "the WAV samples are stored as FLAC, unchanged in sound",
+    "amp_veltrack=0: a drawbar organ is not velocity sensitive, so every velocity plays at the level of the hardest (the source's default 100 swung a note 19 dB from velocity 40 to 120); a channel's velocity weight in the DAW still adds a swing",
+    "volume=-10.40: at every velocity the organ's C3 plays as loud as the median of the other pitched sets at velocity 100 (-18.6 LUFS, measured with compare.py); at full level it was the loudest set by 9 dB",
+    "loop_end is the source's less one in all 16 loops: the source writes the frame after the loop, and its files hold the loop's first frames again from there (measured), where SFZ and the DAW name the loop's last frame; read as written, every wrap played the loop's first frame twice"
+  ]
+}

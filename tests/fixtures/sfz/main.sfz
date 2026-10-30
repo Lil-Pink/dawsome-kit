@@ -1,0 +1,22 @@
+// The reader's known answer: test_kitlib.ReadSfz lists the regions this file must give.
+/* A block comment
+   <region> sample=never.wav
+*/
+#define $LOW 36
+#define $LOWEST 24
+
+<control>
+default_path=samples/
+
+<global>
+ampeg_release=0.5 volume=-3
+
+<group> lovel=1 hivel=63
+<region> sample=soft kick.wav key=$LOW   // a name with a space, a variable
+<region> sample=soft snare.wav lokey=c#2 hikey=d2 pitch_keycenter=38 volume=-6
+
+<group> lovel=64
+#include "parts/loud.sfz"
+
+<global>
+<region> sample=low.wav lokey=$LOWEST hikey=$LOW

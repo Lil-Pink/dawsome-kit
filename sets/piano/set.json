@@ -1,0 +1,34 @@
+{
+  "name": "Upright Piano",
+  "kind": "instrument",
+  "maker": "FreePats: recorded by Gonzalo and Roberto, edited by Roberto",
+  "licence": "CC0-1.0",
+  "licence_page": "https://freepats.zenvoid.org/Piano/acoustic-grand-piano.html",
+  "licence_quote": "Published under the terms of the Creative Commons CC0 1.0 public domain dedication.",
+  "source": "FreePats Upright Piano KW, version 2022-02-21 (SFZ + FLAC)",
+  "source_url": "https://freepats.zenvoid.org/Piano/UprightPianoKW/UprightPianoKW-SFZ+FLAC-20220221.7z",
+  "sfz": "piano.sfz",
+  "zones": 66,
+  "keys": [
+    21,
+    108
+  ],
+  "loops": true,
+  "peak_db": -1.0,
+  "files": 66,
+  "size": 11202144,
+  "decoded_size": 114712384,
+  "sample_rates": [
+    44100
+  ],
+  "channels": [
+    2
+  ],
+  "notes": [
+    "FreePats' full Upright Piano KW: every key, both velocity layers (1-80, 81-127); the bass notes loop, the treble plays out",
+    "loop_end is the source's less one in all 34 loops: the source writes the frame after the loop, and its files hold the loop's first frames again from there (measured), where SFZ and the DAW name the loop's last frame; read as written, every wrap played the loop's first frame twice",
+    "3 regions had a fixed low-pass (fil_type=lpf_2p, cutoff); it is applied to their samples (ffmpeg, 2-pole) since the DAW reads no filter opcodes",
+    "dropped width at its SFZ default (no effect)",
+    "volume lowered by 1.05 dB so a full-velocity note peaks at or below -1 dBFS (its loudest note reaches +0.05 dBFS when resampled)"
+  ]
+}

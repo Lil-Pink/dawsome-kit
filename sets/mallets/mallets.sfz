@@ -1,0 +1,40 @@
+// Marimba: part of dawsome-kit, written by build.py.
+// From Versilian Community Sample Library (VCSL), at a pinned commit; CC0-1.0, see set.json.
+// Uses only the SFZ opcodes Dawsome reads; keys are MIDI numbers (C4 = 60).
+
+<control>
+default_path=samples/
+
+<global>
+loop_mode=one_shot
+
+<region> sample=Marimba_hit_Outrigger_F1_soft_01.flac lokey=36 hikey=44 pitch_keycenter=41 lovel=1 hivel=42 volume=-9.20
+<region> sample=Marimba_hit_Outrigger_F1_med_01.flac lokey=36 hikey=44 pitch_keycenter=41 lovel=43 hivel=84 volume=-5.68
+<region> sample=Marimba_hit_Outrigger_F1_loud_01.flac lokey=36 hikey=44 pitch_keycenter=41 lovel=85 hivel=127 volume=-10.87
+<region> sample=Marimba_hit_Outrigger_C2_soft_01.flac lokey=45 hikey=51 pitch_keycenter=48 lovel=1 hivel=42 volume=-9.63
+<region> sample=Marimba_hit_Outrigger_C2_med_01.flac lokey=45 hikey=51 pitch_keycenter=48 lovel=43 hivel=84 volume=-6.47
+<region> sample=Marimba_hit_Outrigger_C2_loud_01.flac lokey=45 hikey=51 pitch_keycenter=48 lovel=85 hivel=127 volume=-0.01
+<region> sample=Marimba_hit_Outrigger_G2_soft_01.flac lokey=52 hikey=57 pitch_keycenter=55 lovel=1 hivel=42 volume=-11.10
+<region> sample=Marimba_hit_Outrigger_G2_med_01.flac lokey=52 hikey=57 pitch_keycenter=55 lovel=43 hivel=84 volume=-8.90
+<region> sample=Marimba_hit_Outrigger_G2_loud_01.flac lokey=52 hikey=57 pitch_keycenter=55 lovel=85 hivel=127 volume=-7.61
+<region> sample=Marimba_hit_Outrigger_B2_soft_01.flac lokey=58 hikey=62 pitch_keycenter=59 lovel=1 hivel=42 volume=-8.12
+<region> sample=Marimba_hit_Outrigger_B2_med_01.flac lokey=58 hikey=62 pitch_keycenter=59 lovel=43 hivel=84 volume=-6.54
+<region> sample=Marimba_hit_Outrigger_B2_loud_01.flac lokey=58 hikey=62 pitch_keycenter=59 lovel=85 hivel=127 volume=-13.05
+<region> sample=Marimba_hit_Outrigger_F3_soft_01.flac lokey=63 hikey=68 pitch_keycenter=65 lovel=1 hivel=42 volume=-0.01
+<region> sample=Marimba_hit_Outrigger_F3_med_01.flac lokey=63 hikey=68 pitch_keycenter=65 lovel=43 hivel=84 volume=-5.22
+<region> sample=Marimba_hit_Outrigger_F3_loud_01.flac lokey=63 hikey=68 pitch_keycenter=65 lovel=85 hivel=127 volume=-6.59
+<region> sample=Marimba_hit_Outrigger_C4_soft_01.flac lokey=69 hikey=75 pitch_keycenter=72 lovel=1 hivel=42 volume=-1.77
+<region> sample=Marimba_hit_Outrigger_C4_med_01.flac lokey=69 hikey=75 pitch_keycenter=72 lovel=43 hivel=84 volume=-0.01
+<region> sample=Marimba_hit_Outrigger_C4_loud_01.flac lokey=69 hikey=75 pitch_keycenter=72 lovel=85 hivel=127 volume=-4.24
+<region> sample=Marimba_hit_Outrigger_G4_soft_01.flac lokey=76 hikey=81 pitch_keycenter=79 lovel=1 hivel=42 volume=-0.52
+<region> sample=Marimba_hit_Outrigger_G4_med_01.flac lokey=76 hikey=81 pitch_keycenter=79 lovel=43 hivel=84 volume=-1.94
+<region> sample=Marimba_hit_Outrigger_G4_loud_01.flac lokey=76 hikey=81 pitch_keycenter=79 lovel=85 hivel=127 volume=-4.85
+<region> sample=Marimba_hit_Outrigger_B4_soft_01.flac lokey=82 hikey=86 pitch_keycenter=83 lovel=1 hivel=42 volume=-7.42
+<region> sample=Marimba_hit_Outrigger_B4_med_01.flac lokey=82 hikey=86 pitch_keycenter=83 lovel=43 hivel=84 volume=-1.66
+<region> sample=Marimba_hit_Outrigger_B4_loud_01.flac lokey=82 hikey=86 pitch_keycenter=83 lovel=85 hivel=127 volume=-3.88
+<region> sample=Marimba_hit_Outrigger_F5_soft_01.flac lokey=87 hikey=92 pitch_keycenter=89 lovel=1 hivel=42 volume=-27.75
+<region> sample=Marimba_hit_Outrigger_F5_med_01.flac lokey=87 hikey=92 pitch_keycenter=89 lovel=43 hivel=84 volume=-9.73
+<region> sample=Marimba_hit_Outrigger_F5_loud_01.flac lokey=87 hikey=92 pitch_keycenter=89 lovel=85 hivel=127 volume=-9.43
+<region> sample=Marimba_hit_Outrigger_C6_soft_01.flac lokey=93 hikey=100 pitch_keycenter=96 lovel=1 hivel=42 volume=-22.60
+<region> sample=Marimba_hit_Outrigger_C6_med_01.flac lokey=93 hikey=100 pitch_keycenter=96 lovel=43 hivel=84 volume=-6.48
+<region> sample=Marimba_hit_Outrigger_C6_loud_01.flac lokey=93 hikey=100 pitch_keycenter=96 lovel=85 hivel=127 volume=-4.04

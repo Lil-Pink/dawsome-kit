@@ -1,0 +1,25 @@
+// Sweep Pad: part of dawsome-kit, written by build.py.
+// From FreePats Sweep Pad, version 2019-08-13 (SFZ + FLAC); CC0-1.0, see set.json.
+// Uses only the SFZ opcodes Dawsome reads; keys are MIDI numbers (C4 = 60).
+
+<control>
+default_path=samples/
+
+<global>
+loop_mode=loop_continuous
+volume=-1.02
+ampeg_release=1.0
+
+<region> sample=C2.flac lokey=33 hikey=37 pitch_keycenter=36 loop_start=32767 loop_end=352254
+<region> sample=E2.flac lokey=38 hikey=41 pitch_keycenter=40 loop_start=43199 loop_end=336062
+<region> sample=G#2.flac lokey=42 hikey=45 pitch_keycenter=44 loop_start=27903 loop_end=329470
+<region> sample=C3.flac lokey=46 hikey=49 pitch_keycenter=48 loop_start=34720 loop_end=357320
+<region> sample=E3.flac lokey=50 hikey=53 pitch_keycenter=52 loop_start=34303 loop_end=321534
+<region> sample=G#3.flac lokey=54 hikey=57 pitch_keycenter=56 loop_start=36760 loop_end=291326
+<region> sample=C4.flac lokey=58 hikey=61 pitch_keycenter=60 loop_start=21167 loop_end=352510
+<region> sample=E4.flac lokey=62 hikey=65 pitch_keycenter=64 loop_start=33791 loop_end=346622
+<region> sample=G#4.flac lokey=66 hikey=69 pitch_keycenter=68 loop_start=31207 loop_end=309246
+<region> sample=C5.flac lokey=70 hikey=73 pitch_keycenter=72 loop_start=17382 loop_end=302078
+<region> sample=E5.flac lokey=74 hikey=77 pitch_keycenter=76 loop_start=46591 loop_end=329726
+<region> sample=G#5.flac lokey=78 hikey=81 pitch_keycenter=80 loop_start=24298 loop_end=273146
+<region> sample=C6.flac lokey=82 hikey=96 pitch_keycenter=84 loop_start=28385 loop_end=304343
