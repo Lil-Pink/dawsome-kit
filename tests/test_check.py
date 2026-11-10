@@ -214,6 +214,16 @@ class Check(unittest.TestCase):
         self.made_with(made_from=self.made_from())
         self.assertEqual(self.problems(), [])
 
+    def test_a_made_sample_names_its_render_beside_its_recordings(self):
+        self.write_sources()
+        self.made_with(made_from=self.made_from(), member="a.wav", made_from_sha256="4" * 64)
+        self.assertEqual(self.problems(), [])
+
+    def test_a_render_hash_that_is_not_a_sha256(self):
+        self.write_sources()
+        self.made_with(made_from=self.made_from(), member="a.wav", made_from_sha256="4" * 63)
+        self.assertProblem("made_from_sha256 is not a SHA-256")
+
     def test_a_made_sample_without_made_from(self):
         self.write_sources()
         self.made_with()
@@ -223,6 +233,63 @@ class Check(unittest.TestCase):
         self.write_sources()
         self.made_with(made_from=self.made_from(("Samples/b_1.wav",)))
         self.assertProblem("Samples/b_1.wav is not a file sources.json pins for rec")
+
+    def synthesized_with(self, set_says=True, **fields):
+        """The kit with its WAVs committed as made by synthesis, from no recording, plus `fields`
+        on their entries; its set.json says synthesized when `set_says`."""
+        make_kit(self.root)
+        if set_says:
+            path = self.root / "sets" / "demo" / "set.json"
+            path.write_text(json.dumps({**json.loads(path.read_text()), "synthesized": True}))
+
+        def change(path, entry):
+            if path.endswith(".wav"):
+                for name in ("origin", "origin_sha256", "member"):
+                    entry.pop(name)
+                entry.update(made_by="made", **fields)
+        write_manifest(self.root, change)
+
+    RENDER = {"synthesized": True, "member": "renders/a.wav", "made_from_sha256": "4" * 64}
+
+    def test_a_synthesized_sample_traced_to_its_render_passes(self):
+        self.synthesized_with(**self.RENDER)
+        self.assertEqual(self.problems(), [])
+
+    def test_a_synthesized_sample_that_names_recordings(self):
+        self.write_sources()
+        self.synthesized_with(**self.RENDER, made_from=self.made_from())
+        self.assertProblem("synthesized, yet it names recordings under made_from")
+
+    def test_a_synthesized_sample_without_its_renders_hash(self):
+        self.synthesized_with(**{**self.RENDER, "made_from_sha256": "not a hash"})
+        self.assertProblem("synthesized, but no member and made_from_sha256")
+
+    def test_a_synthesized_sample_without_its_renders_name(self):
+        self.synthesized_with(**{k: v for k, v in self.RENDER.items() if k != "member"})
+        self.assertProblem("synthesized, but no member and made_from_sha256")
+
+    def test_a_synthesized_sample_in_a_set_that_does_not_say_so(self):
+        self.synthesized_with(set_says=False, **self.RENDER)
+        self.assertProblem("synthesized, but its set's set.json does not say so")
+
+    def test_only_a_made_sample_can_be_synthesized(self):
+        make_kit(self.root)
+        path = self.root / "sets" / "demo" / "set.json"
+        path.write_text(json.dumps({**json.loads(path.read_text()), "synthesized": True}))
+        write_manifest(self.root, lambda path, entry: entry.update(synthesized=True)
+                       if path.endswith(".wav") else None)
+        self.assertProblem("synthesized, but made_by 'copied', not made")
+
+    def test_synthesized_is_true_or_absent(self):
+        self.synthesized_with(**{**self.RENDER, "synthesized": "yes"})
+        self.assertProblem("synthesized is 'yes'; true or absent")
+
+    def test_a_set_that_says_synthesized_excuses_no_made_sample_without_made_from(self):
+        # The guitar's rule is not loosened: a made sample that names no recordings and does not
+        # itself say synthesized fails as before, whatever its set's set.json says.
+        self.synthesized_with(member="renders/a.wav", made_from_sha256="4" * 64)
+        self.assertProblem("made, but no made_from to trace it by")
+        self.assertProblem("its set's set.json says synthesized, but this sample does not")
 
     def test_made_from_a_file_the_source_does_not_pin(self):
         self.write_sources()

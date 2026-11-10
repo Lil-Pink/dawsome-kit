@@ -1,0 +1,30 @@
+# Reed Piano
+
+An instrument set of dawsome-kit, committed as made: a physically modelled reed electric piano made for Dawsome. `ep-reed.sfz` plays the sounds in `samples/` on keys 0 to 127 (MIDI numbers, C4 = 60).
+
+## Source
+
+- procedural / physically modelled synthesis, curated by ear
+- Made by: Dawsome
+- From: this repository, committed as made
+- Recordings: none; every sound is synthesized by the model
+
+## License
+
+CC0 1.0 Universal, a public domain dedication: use, change, sell and share these sounds, in songs or in software, with no credit due.
+
+- License page: https://creativecommons.org/publicdomain/zero/1.0/
+- It says: "No Copyright. The person who associated a work with this deed has dedicated the work to the public domain by waiving all of his or her rights to the work worldwide under copyright law"
+- Note: made for Dawsome from no recordings, by a physical model and effects of its own; dedicated CC0 1.0
+
+`set.json` holds the same facts with the set's figures, and the kit's `MANIFEST.json` traces every file to its source and SHA-256.
+
+## How it was made
+
+- a reed electric piano made for Dawsome by a physical model, with no recordings: a struck steel reed, clamped at one end, swinging along the edge of a charged plate (a capacitive pickup, so mostly odd harmonics, the hollow sound); its own overtones sit at a clamped bar's mode ratios, far above the note, and die fast; harder notes growl because the reed's swing flattens both ends of the pickup's curve, not because of a filter
+- played through its own effects, baked into the samples: +1.5 dB under 220 Hz, -2 dB over 5 kHz, a light three-voice chorus, a 5.5 Hz tremolo and 2:1 compression
+- 31 notes on C, D, F, G and A from C1 to C7, each key playing its nearest note (keys 0-127); three velocity layers (1-42, 43-84, 85-127) played at velocities 40, 80 and 112, so harder is brighter as well as louder; one sample per note and layer
+- every sample peaks at -1 dBFS (true peak -0.5 dBTP at most); the default amp_veltrack=100 turns velocity into loudness; ampeg_release=0.2
+- each note is held until it dies away: its sample starts at the note's onset with a 0.25 ms fade-in, is high-passed at 15 Hz, and ends where its 10 ms level has fallen 63 dB under its peak for good, faded out over 5 ms (1.3 to 55.1 s; the low notes ring longest)
+- 48 kHz stereo, rendered at 24 bits and stored as 16-bit FLAC: each sample dithered to 16 bits as y = rint(x * 32767 + a - b), clipped to 16 bits, where x is the render's 24-bit value over 2^23 and a, then b, are a frame-by-channel array of uniform noise on [0, 1) from NumPy's default_rng seeded with the first 8 bytes, big-endian, of the SHA-256 of the file's name without .flac, so the same render always gives the same 16-bit samples; each sample's MANIFEST.json entry names its render and that render's SHA-256 (member, made_from_sha256)
+- volume lowered by 0.46 dB so a full-velocity note peaks at or below -1 dBFS (its loudest note reaches -0.55 dBFS when resampled)

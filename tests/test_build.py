@@ -4,13 +4,18 @@ sources (Virtuosity Drums splits its four kick layers at velocities 31, 63 and 9
 arithmetic done by hand, from signals whose correct result follows from their construction,
 and from metaflac's listing of fixtures/audio/ramp.flac."""
 
+import contextlib
+import io
 import math
+import re
 import shutil
+import sys
 import tempfile
 import unittest
 import wave
 from array import array
 from pathlib import Path
+from unittest import mock
 
 import build
 import kitlib
@@ -766,6 +771,236 @@ def _compare_or_skip(test):
     if not compare.default_binary().is_file():
         test.skipTest(f"needs a built dawsome at {compare.default_binary()}")
     return compare
+
+
+class CommittedSets(unittest.TestCase):
+    """build.py keeps the sets committed as made (COMMITTED) and their MANIFEST.json entries as they
+    are. main() runs here with no set to build and no download set (plans and download_sets give
+    none), writing a copy of the shipped MANIFEST.json."""
+
+    def run_main(self, *names):
+        """(the files main() writes to the manifest copy, what it prints) for build.py `names`."""
+        with tempfile.TemporaryDirectory() as folder:
+            manifest = Path(folder) / "MANIFEST.json"
+            shutil.copyfile(kitlib.MANIFEST, manifest)
+            printed = io.StringIO()
+            with (mock.patch.object(build, "require_ffmpeg", lambda: "ffmpeg"),
+                  mock.patch.object(build, "plans", lambda downloads, sources: []),
+                  mock.patch.object(build, "download_sets", lambda downloads, sources: []),
+                  mock.patch.object(kitlib, "MANIFEST", manifest),
+                  mock.patch.object(kitlib, "SETS", Path(folder) / "sets"),
+                  mock.patch.object(sys, "argv", ["build.py", *names]),
+                  contextlib.redirect_stdout(printed), contextlib.redirect_stderr(io.StringIO())):
+                self.assertEqual(build.main(), 0)
+            return kitlib.read_json(manifest)["files"], printed.getvalue()
+
+    def test_a_full_build_keeps_exactly_the_committed_sets_entries(self):
+        files, printed = self.run_main()
+        committed = tuple(f"sets/{name}/" for name in build.COMMITTED)
+        self.assertEqual(files, [entry for entry in kitlib.read_json(kitlib.MANIFEST)["files"]
+                                 if entry["path"].startswith(committed)])
+        for name in build.COMMITTED:
+            self.assertTrue(any(entry["path"].startswith(f"sets/{name}/samples/")
+                                for entry in files), name)
+            self.assertIn(f"build: {name}: committed as made; kept as it is", printed)
+
+    def test_building_only_a_committed_set_keeps_every_entry(self):
+        files, printed = self.run_main("ep-reed")
+        self.assertEqual(files, kitlib.read_json(kitlib.MANIFEST)["files"])
+        self.assertEqual(printed, "build: ep-reed: committed as made; kept as it is\n")
+
+    def test_every_set_committed_as_made_is_one_build_py_keeps(self):
+        # A committed set missing from COMMITTED would lose its manifest entries in a full build.
+        made = {folder.name for folder in kitlib.SETS.iterdir() if folder.is_dir()
+                and kitlib.read_json(folder / "set.json")["source_url"]
+                == "this repository, committed as made"}
+        self.assertEqual(made, set(build.COMMITTED))
+
+    def test_a_committed_set_with_no_download_is_one_its_set_json_calls_synthesized(self):
+        for name, download in build.COMMITTED.items():
+            about = kitlib.read_json(kitlib.SETS / name / "set.json")
+            self.assertEqual(about.get("synthesized") is True, download is None, name)
+
+
+class SynthesizedElectricPianos(unittest.TestCase):
+    """Dreamy EP, Turismo EP and Reed Piano: tine and reed electric pianos physically modelled for
+    the kit from no recording, committed as made. Each: 31 notes (C, D, F, G and A from C1 to C7)
+    in three velocity layers over keys 0-127, 93 samples of 48 kHz 16-bit stereo FLAC, and one
+    volume cut on every region, the least 0.01 dB step that keeps a full-velocity note at or under
+    -1 dBFS. The loudest sample named here is the one build.py's playback_peak_db measured loudest
+    of all 93 (2026-11-09); with the cut it peaks at -1.0003, -1.0024 and -1.0059 dBFS."""
+
+    SETS = {  # folder: (name, the cut, the loudest sample)
+        "ep-dreamy": ("Dreamy EP", "-0.07", "Tine EP2 A6 v3 rr1 [keys_ep2].flac"),
+        "ep-turismo": ("Turismo EP", "-0.20", "Tine EP4 C7 v3 rr1 [keys_ep4].flac"),
+        "ep-reed": ("Reed Piano", "-0.46", "Reed EP F1 v3 rr1 [keys_reed].flac"),
+    }
+    SOURCE = "procedural / physically modelled synthesis, curated by ear"
+
+    def test_each_set_passes_the_kits_checks_as_described(self):
+        import check
+        for folder, (name, cut, _) in self.SETS.items():
+            path = kitlib.SETS / folder
+            self.assertEqual(check.check_set(path, kitlib.ROOT), [], folder)
+            about = kitlib.read_json(path / "set.json")
+            self.assertEqual(
+                [about[key] for key in ("name", "category", "maker", "licence", "source",
+                                        "synthesized", "keys", "files", "sample_rates",
+                                        "channels")],
+                [name, "Keys", "Dawsome", "CC0-1.0", self.SOURCE, True, [0, 127], 93, [48000],
+                 [2]], folder)
+            sfz = kitlib.read_sfz(path / f"{folder}.sfz")
+            self.assertEqual({region["volume"] for region in sfz.regions}, {cut}, folder)
+            self.assertEqual(sorted({int(region["pitch_keycenter"]) for region in sfz.regions}),
+                             [12 * octave + 12 + step for octave in range(1, 7)
+                              for step in (0, 2, 5, 7, 9)] + [96], folder)
+            self.assertEqual(sorted({(region["lovel"], region["hivel"]) for region in sfz.regions},
+                                    key=lambda layer: int(layer[0])),
+                             [("1", "42"), ("43", "84"), ("85", "127")], folder)
+            self.assertEqual({kitlib.audio_info(sample).bits
+                              for sample in (path / "samples").iterdir()}, {16}, folder)
+
+    def test_every_sample_names_its_render_and_no_recording(self):
+        for folder in self.SETS:
+            entries = shipped_samples(folder)
+            self.assertEqual(len(entries), 93, folder)
+            for name, entry in entries.items():
+                self.assertEqual((entry["made_by"], entry["synthesized"], entry["source"],
+                                  entry["licence"], entry["licence_page"]),
+                                 ("made", True, "dawsome-kit", "CC0-1.0", kitlib.CC0_DEED), name)
+                self.assertNotIn("made_from", entry)
+                self.assertTrue(entry["member"].endswith(f"/samples/{name[:-len('.flac')]}.wav"),
+                                name)
+                self.assertRegex(entry["made_from_sha256"], "^[0-9a-f]{64}$")
+
+    @unittest.skipUnless(shutil.which("ffmpeg"), "needs ffmpeg")
+    def test_the_loudest_note_at_full_velocity_peaks_at_the_limit(self):
+        ffmpeg = shutil.which("ffmpeg")
+        for folder, (_, cut, loudest) in self.SETS.items():
+            peak = build.playback_peak_db(ffmpeg, kitlib.SETS / folder / "samples" / loudest)
+            self.assertLessEqual(peak + float(cut), kitlib.PEAK_DB, folder)
+            self.assertGreater(peak + float(cut), kitlib.PEAK_DB - 0.01, folder)
+
+
+def pinned_files(source):
+    """{path: SHA-256} of the files sources.json pins for `source`."""
+    return {entry["path"]: entry["sha256"]
+            for entry in kitlib.read_json(kitlib.SOURCES)["sources"][source]["files"]}
+
+
+class AcousticGuitar(unittest.TestCase):
+    """The acoustic guitar as chosen on 2026-11-09, committed as made: Shinyguitar's recorded
+    pluck through a modelled flat-top body driving a modelled string, keys 36-88, three velocity
+    layers (1-42, 43-84, 85-127) of two round robins each over 17 notes, amp_veltrack=80 and
+    ampeg_release=0.6 on every region, 102 samples of 44.1 kHz 16-bit mono FLAC, each made from
+    one of Shinyguitar's microphone recordings. Its loudest note at full velocity, a4_v3_rr1 at
+    its region's volume, was found by build.py's playback_peak_db over all 102 (2026-11-09)."""
+
+    FOLDER = kitlib.SETS / "guitar-acoustic"
+
+    def test_the_set_passes_the_kits_checks_as_described(self):
+        import check
+        self.assertEqual(check.check_set(self.FOLDER, kitlib.ROOT), [])
+        about = kitlib.read_json(self.FOLDER / "set.json")
+        self.assertEqual(
+            [about[key] for key in ("name", "category", "licence", "keys", "files", "sample_rates",
+                                    "channels")],
+            ["Acoustic Guitar", "Guitar", "CC0-1.0", [36, 88], 102, [44100], [1]])
+        self.assertNotIn("synthesized", about)
+        sfz = kitlib.read_sfz(self.FOLDER / "guitar-acoustic.sfz")
+        self.assertEqual(len({region["pitch_keycenter"] for region in sfz.regions}), 17)
+        self.assertEqual({(region["lovel"], region["hivel"], region["seq_length"],
+                           region["amp_veltrack"], region["ampeg_release"])
+                          for region in sfz.regions},
+                         {(low, high, "2", "80", "0.6")
+                          for low, high in (("1", "42"), ("43", "84"), ("85", "127"))})
+        self.assertEqual({region["seq_position"] for region in sfz.regions}, {"1", "2"})
+        self.assertEqual({kitlib.audio_info(sample).bits
+                          for sample in (self.FOLDER / "samples").iterdir()}, {16})
+
+    def test_every_sample_is_made_from_a_pinned_shinyguitar_recording(self):
+        pinned = pinned_files("karoryfer-shinyguitar")
+        entries = shipped_samples("guitar-acoustic")
+        self.assertEqual(len(entries), 102)
+        for name, entry in entries.items():
+            self.assertEqual((entry["made_by"], entry["made_from"]["source"],
+                              entry["member"], entry["licence"]),
+                             ("made", "karoryfer-shinyguitar", f"{name[:-len('.flac')]}.wav",
+                              "CC0-1.0"), name)
+            self.assertNotIn("synthesized", entry)
+            (recording,) = entry["made_from"]["members"]
+            self.assertIn(recording, pinned, name)
+            # Shinyguitar names its files by the pitch they sound: the made note's own.
+            self.assertTrue(recording.startswith(f"Samples/acoustic/{name.split('_')[0]}_vl"), name)
+            self.assertRegex(entry["made_from_sha256"], "^[0-9a-f]{64}$")
+
+    @unittest.skipUnless(shutil.which("ffmpeg"), "needs ffmpeg")
+    def test_the_loudest_note_at_full_velocity_peaks_at_the_limit(self):
+        sfz = kitlib.read_sfz(self.FOLDER / "guitar-acoustic.sfz")
+        (region,) = [r for r in sfz.regions if r["sample"].endswith("/a4_v3_rr1.flac")]
+        peak = build.playback_peak_db(shutil.which("ffmpeg"), self.FOLDER / sfz.sample_path(region))
+        self.assertLessEqual(peak + float(region["volume"]), kitlib.PEAK_DB)
+        self.assertGreater(peak + float(region["volume"]), kitlib.PEAK_DB - 0.01)
+
+
+class UprightKnight(unittest.TestCase):
+    """The Knight upright, committed as made: VCSL's Knight recordings, each note its recording with
+    a layer of the kit's own, 45 notes a whole tone apart from A0 (MIDI 21) to B7 plus C8 (108),
+    over keys 0-127, two velocity layers (1-63, 64-127), 90 samples of 48 kHz 16-bit stereo FLAC,
+    one volume cut of -0.20 dB on every region. Each sample is made from the Sustains recording of
+    its note and layer, VCSL naming notes an octave lower than MIDI (its A-1 is MIDI 21) and a
+    sharp with '#' where the samples write 's': the soft layer from vl1, the loud from vl2. Its
+    loudest note at full velocity, C8 v2, was found by build.py's playback_peak_db over all 90
+    (2026-11-09)."""
+
+    FOLDER = kitlib.SETS / "upright-knight"
+    SOURCE = ("re-voiced from public-domain (CC0) VCSL Knight recordings with a pedal and variation"
+              " layer of the kit's own")
+    SUSTAINS = "Chordophones/Zithers/Upright Piano, Knight/Sustains/"
+
+    def test_the_set_passes_the_kits_checks_as_described(self):
+        import check
+        self.assertEqual(check.check_set(self.FOLDER, kitlib.ROOT), [])
+        about = kitlib.read_json(self.FOLDER / "set.json")
+        self.assertEqual(
+            [about[key] for key in ("name", "category", "maker", "licence", "source", "keys",
+                                    "files", "sample_rates", "channels")],
+            ["Upright Knight", "Keys", "Dawsome", "CC0-1.0", self.SOURCE, [0, 127], 90, [48000],
+             [2]])
+        self.assertNotIn("synthesized", about)
+        sfz = kitlib.read_sfz(self.FOLDER / "upright-knight.sfz")
+        self.assertEqual(sorted({int(region["pitch_keycenter"]) for region in sfz.regions}),
+                         [*range(21, 108, 2), 108])
+        self.assertEqual({(region["lovel"], region["hivel"]) for region in sfz.regions},
+                         {("1", "63"), ("64", "127")})
+        self.assertEqual({region["volume"] for region in sfz.regions}, {"-0.20"})
+        self.assertEqual({kitlib.audio_info(sample).bits
+                          for sample in (self.FOLDER / "samples").iterdir()}, {16})
+
+    def test_every_sample_is_made_from_its_notes_pinned_knight_recording(self):
+        pinned = pinned_files("vcsl")
+        entries = shipped_samples("upright-knight")
+        self.assertEqual(len(entries), 90)
+        for name, entry in entries.items():
+            note, layer = re.fullmatch(r"Upright Knight (\S+) v([12]) rr1 \[keys_upright\]\.flac",
+                                       name).groups()
+            letters, octave = re.fullmatch(r"([A-G]s?)(\d)", note).groups()
+            recording = (f"{self.SUSTAINS}Player_vl{layer}_rr1_"
+                         f"{letters.replace('s', '#')}{int(octave) - 1}.wav")
+            self.assertEqual((entry["made_by"], entry["made_from"]["source"],
+                              entry["made_from"]["members"], entry["licence"]),
+                             ("made", "vcsl", [recording], "CC0-1.0"), name)
+            self.assertIn(recording, pinned, name)
+            self.assertNotIn("synthesized", entry)
+            self.assertEqual(entry["member"], f"{name[:-len('.flac')]}.wav")
+            self.assertRegex(entry["made_from_sha256"], "^[0-9a-f]{64}$")
+
+    @unittest.skipUnless(shutil.which("ffmpeg"), "needs ffmpeg")
+    def test_the_loudest_note_at_full_velocity_peaks_at_the_limit(self):
+        path = self.FOLDER / "samples" / "Upright Knight C8 v2 rr1 [keys_upright].flac"
+        peak = build.playback_peak_db(shutil.which("ffmpeg"), path) - 0.20
+        self.assertLessEqual(peak, kitlib.PEAK_DB)
+        self.assertGreater(peak, kitlib.PEAK_DB - 0.01)
 
 
 class Writing(unittest.TestCase):

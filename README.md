@@ -1,9 +1,10 @@
 # dawsome-kit
 
 The instrument sets for [Dawsome](https://github.com/dawsome), an open-source digital audio
-workstation: a piano, three basses, an organ, an electric piano, two pads, strings, an
-acoustic and an electric guitar, a marimba, two drum kits and a folder of one-shots and
-loops, about 142 MB in all.
+workstation: two upright pianos (one of them VCSL's Knight, re-voiced for the kit), three
+basses, an organ, four electric pianos (three of them physically modelled for the kit, from no
+recording), two pads, strings, an acoustic and an electric guitar, a marimba, two drum kits and
+a folder of one-shots and loops, about 347 MB in all.
 Every sound in it is CC0 at its source, so you may use, change, sell and redistribute it, in
 songs or in software, with no credit due.
 
@@ -15,9 +16,10 @@ sets/piano/
   samples/       the sounds, 16-bit FLAC at the source's rate (or the source's own FLAC)
   set.json       name, maker, `licence` with a quote from the source's license page, source,
                  size on disk, size once decoded, the peak of a full-velocity note, notes
-                 (and, in the sets added later, the Library group as `category`)
-  README.md      the guitars, the bass guitar and the electric piano: the source, maker,
-                 license and notes in plain words
+                 (and, in the sets added later, the Library group as `category`; in a set
+                 synthesized from no recording, `synthesized: true`)
+  README.md      the guitars, the bass guitar, the Knight upright and the electric pianos:
+                 the source, maker, license and notes in plain words
 ```
 
 `sets/one-shots/` is the exception: plain sound files for the sampler, no `.sfz`
@@ -36,15 +38,19 @@ their own rate, which is how Dawsome preloads them (a 48 kHz project adds about 
 | Set | Name | Files | On disk | Decoded | Keys | Source | License page |
 |-|-|-|-|-|-|-|-|
 | `piano` | Upright Piano | 66 | 11.2 MB | 114.7 MB | 21–108 | FreePats Upright Piano KW 2022-02-21 | [FreePats](https://freepats.zenvoid.org/Piano/acoustic-grand-piano.html) |
+| `upright-knight` | Upright Knight | 90 | 64.7 MB | 526.6 MB | 0–127 | re-voiced from public-domain (CC0) VCSL Knight recordings with a pedal and variation layer of the kit's own: every note one of VCSL's Knight upright recordings, with the sustain pedal's sympathetic ring, a per-note tone variation and a light room, 45 notes, 2 velocity layers | [VCSL](https://github.com/sgossner/VCSL) (the recordings); the layer is the kit's own, CC0 |
 | `bass-electric` | Electric Bass | 12 | 1.0 MB | 8.4 MB | 26–45 | FreePats Bass Guitar YR, finger, 2019-09-30; notes start from silence | [FreePats](https://freepats.zenvoid.org/ElectricGuitar/clean-electric-bass.html) |
 | `bass-synth` | Synth Bass | 9 | 0.9 MB | 9.3 MB | 28–88 | FreePats Synth Bass #2, 2021-04-05 | [FreePats](https://freepats.zenvoid.org/Synthesizer/synth-bass.html) |
 | `bass-guitar` | Bass Guitar | 285 | 52.6 MB | 329.6 MB | 12–72 | Karoryfer Fashionbass (fingers, neck pickup; tuned in fifths, its low string down to F#0), 5 velocity layers, 3 round robins; retuned where a note holds one pitch, layers made equally loud, notes start from silence | [LICENSE](https://github.com/sfzinstruments/karoryfer.fashionbass/blob/0703973b300a6bacb837602be9b588ab64732a72/LICENSE) |
 | `organ` | Drawbar Organ | 16 | 1.9 MB | 13.0 MB | 33–98 | FreePats Drawbar organ emulation, 2019-07-12; velocity leaves its level alone, as on a drawbar organ, played at the other sets' loudness | [FreePats](https://freepats.zenvoid.org/Organ/electric-organ.html) |
 | `ep` | Electric Piano | 36 | 9.0 MB | 87.6 MB | 27–98 | FreePats FM Synthesized Piano #1, 2019-09-16 (the DX7's E. Piano 1, recorded from Hexter) | [FreePats](https://freepats.zenvoid.org/ElectricPiano/synthesized-piano.html) |
+| `ep-dreamy` | Dreamy EP | 93 | 40.4 MB | 499.6 MB | 0–127 | procedural / physically modelled synthesis, curated by ear: a tine electric piano through its own EQ, chorus, phaser and stereo tremolo, 31 notes, 3 velocity layers; no recording | the kit's own, [CC0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| `ep-turismo` | Turismo EP | 93 | 60.2 MB | 739.9 MB | 0–127 | procedural / physically modelled synthesis, curated by ear: a tine electric piano through its own EQ, slow phaser, deep chorus, tremolo and short room, 31 notes, 3 velocity layers; no recording | the kit's own, [CC0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| `ep-reed` | Reed Piano | 93 | 38.8 MB | 534.2 MB | 0–127 | procedural / physically modelled synthesis, curated by ear: a reed electric piano through its own EQ, chorus, tremolo and compression, 31 notes, 3 velocity layers; no recording | the kit's own, [CC0](https://creativecommons.org/publicdomain/zero/1.0/) |
 | `pad-choir` | Choir Pad | 12 | 6.9 MB | 28.8 MB | 33–108 | FreePats Synth Pad Choir, 2020-05-16 | [FreePats](https://freepats.zenvoid.org/Synthesizer/synth-pad.html) |
 | `pad-sweep` | Sweep Pad | 13 | 3.1 MB | 16.8 MB | 33–96 | FreePats Sweep Pad, 2019-08-13 | [FreePats](https://freepats.zenvoid.org/Synthesizer/synth-pad.html) |
 | `strings` | Strings | 34 | 15.8 MB | 57.7 MB | 31–93 | VSCO 2 Community Edition, cello and violin section sustains; loops run past their end | [Versilian Studios](https://versilian-studios.com/vsco-community/) |
-| `guitar-acoustic` | Acoustic Guitar | 102 | 9.8 MB | 103.6 MB | 36–88 | a real pluck from Karoryfer Shinyguitar v1.002's microphone samples (archtop) driving a modelled steel string and body, 3 velocity layers, 2 round robins | [LICENSE](https://github.com/sfzinstruments/karoryfer.shinyguitar/blob/57243cca85277dbcc120ce17c6178032f93c80f3/LICENSE) (the pluck); the model is the kit's own, CC0 |
+| `guitar-acoustic` | Acoustic Guitar | 102 | 10.4 MB | 103.1 MB | 36–88 | a real pluck from Karoryfer Shinyguitar v1.002's microphone samples (archtop), kept as recorded and also played through a modelled flat-top body, driving a modelled steel string, 3 velocity layers, 2 round robins | [LICENSE](https://github.com/sfzinstruments/karoryfer.shinyguitar/blob/57243cca85277dbcc120ce17c6178032f93c80f3/LICENSE) (the pluck); the model is the kit's own, CC0 |
 | `guitar-electric` | Electric Guitar | 30 | 5.9 MB | 57.6 MB | 35–86 | FreePats FSBS Electric Guitar Clean #1, 2026-08-07, 2 velocity layers; retuned, layers made equally loud | [FreePats](https://freepats.zenvoid.org/ElectricGuitar/clean-electric-guitar.html) |
 | `mallets` | Marimba | 30 | 2.6 MB | 29.9 MB | 36–100 | VCSL marimba; tails that end in the recording's hiss fade into the cut | [VCSL](https://github.com/sgossner/VCSL) |
 | `drums-acoustic` | Acoustic Drums | 84 | 9.8 MB | 54.5 MB | 36–53 | Karoryfer Big Rusty Drums, sticks: each hit its close and overhead microphones mixed as the library's basic kit sets them, 4 velocity layers, 2 round robins; hits start from silence | [LICENSE](https://github.com/sfzinstruments/karoryfer.big-rusty-drums/blob/f07ce00df34a46b6b08375be56fe116cf15782bc/LICENSE) |
@@ -77,12 +83,16 @@ the DAW. `MANIFEST.json` lists the opcodes it uses beyond the subset.
   the loop's first frames again from there, so `build.py` writes it less one: the FreePats loops
   run 8 to 16 frames past `loop_end` with the loop's own start (read as written, every wrap
   played the loop's first frame twice, measured with `compare.py` on 2026-10-27).
-- The acoustic guitar is made, not only converted (2026-10-26, chosen by ear among the
-  guitar-tone candidates): the pluck of each of Shinyguitar's microphone recordings (the
-  recording with its string's own tone taken out) plucks a modelled steel string, heard
-  through a modelled body; three velocity layers, two
-  round robins (`seq_length=2`). The recorded archtop alone was too twangy, like a banjo, and a
-  model alone sounded synthesized. Its files are committed as made.
+- The acoustic guitar is made, not only converted (2026-11-09, chosen by ear in place of the
+  first build of 2026-10-26): the pluck of each of Shinyguitar's microphone recordings (the
+  recording with its string's own tone taken out), kept as recorded and also played through a
+  modelled flat-top body, plucks a modelled steel string; three velocity layers, two round
+  robins (`seq_length=2`). The recorded archtop alone was too twangy, like a banjo, and a model
+  alone sounded synthesized. Its files are committed as made.
+- The Knight upright is re-voiced, not only converted (2026-11-09): every note is its VCSL
+  recording, with the sustain pedal's sympathetic ring, a seeded per-note tilt and a light room
+  of the kit's own over it, rendered at 48 kHz; two velocity layers as the recording has them.
+  Its files are committed as made.
 - The electric guitar (2026-10-26, picked by ear from the guitar-tone candidates) and the bass
   guitar (2026-10-27, Fashionbass, picked by ear) are processed past conversion:
   retuned to A4 = 440 Hz by resampling (the bass only where a sample holds one pitch: its slack
@@ -102,9 +112,9 @@ the DAW. `MANIFEST.json` lists the opcodes it uses beyond the subset.
 - A full-velocity note of any instrument set peaks at or below -1 dBFS: each set's volume is
   trimmed against the worst of three resampled measurements of every sample, with its
   region's volume (`set.json` `peak_db`, `build.py` `PLAYBACK`).
-- Sample rates: 44.1 kHz, except the electric guitar (48 kHz) and two
-  Sonic Pi hi-hats in the electronic drums (`hat_raw` 96 kHz, `hat_sci` 192 kHz, kept at
-  their own rate).
+- Sample rates: 44.1 kHz, except the electric guitar, the Knight upright and the three
+  modelled electric pianos (48 kHz) and two Sonic Pi hi-hats in the electronic drums
+  (`hat_raw` 96 kHz, `hat_sci` 192 kHz, kept at their own rate).
 
 ## Rebuilding
 
@@ -118,15 +128,17 @@ python3 -I -m unittest discover -s tests -t .    # from the repository folder
 ```
 
 Downloads go to `downloads/` (ignored by git; it may be a link to a roomy drive), or wherever
-`--downloads DIR` says: about 1.2 GB to download (2.0 GB on disk with the extracted copies),
-about two fifths of it the optional Osiris Piano.
+`--downloads DIR` says: about 1.6 GB to download (2.4 GB on disk with the extracted copies),
+under a third of it the optional Osiris Piano.
 `fetch.py --check` verifies the downloads against the pins without downloading;
 `build.py SET ...` rebuilds only those sets. The same downloads give the same bytes:
 conversion runs ffmpeg with its bitexact flags, and `check.py` compares every file with its
 recorded hash.
 
-The acoustic guitar is not built here: its samples, `.sfz`, `set.json` and `README.md` are
-committed as they were made, and `build.py` keeps them and their manifest entries as they are.
+The acoustic guitar, the Knight upright and the three modelled electric pianos are not built
+here: their samples, `.sfz`, `set.json` and `README.md` are committed as they were made, and
+`build.py` keeps them and their manifest entries as they are (`COMMITTED` names them; one more
+such set is one more line there).
 
 To add or change a source: read its license page, add it to `sources.json` with a quote from
 that page, run `fetch.py --pin SOURCE` (which records the SHA-256 of what it downloads), then
@@ -179,8 +191,24 @@ python3 -I tools/compare.py --out DIR [--refs INDEX] [--dawsome BIN]
 - The acoustic guitar is a fusion of two CC0 works: the pluck from Shinyguitar's recordings,
   the string and body from a model made for the kit, whose sounds are dedicated CC0 too. Its
   samples' manifest entries say `made_by: made` (committed as made) and name the recording each
-  sample was made from (`made_from`); `check.py` fails when a recording named there is not a
-  file `sources.json` pins for a CC0 source.
+  sample was made from (`made_from`), and the 24-bit sample it was dithered from with that
+  file's SHA-256 (`member`, `made_from_sha256`); `check.py` fails when a recording named there
+  is not a file `sources.json` pins for a CC0 source.
+- The Knight upright is a fusion of two CC0 works too: every note is one of VCSL's Knight
+  recordings, the pedal ring, per-note variation and effects over it the kit's own. Its
+  samples' manifest entries name their recording the same way (`made_from`, one of the 90
+  Sustains files `sources.json` pins for `vcsl` at its pinned commit) and the 24-bit render each
+  was dithered from (`member`, `made_from_sha256`). Those 90 SHA-256s were taken on 2026-11-09
+  from a sparse checkout of that commit, each file first checked against the commit's Git blob
+  hash, and they match the hashes recorded when the renders read the recordings.
+- The electric pianos Dreamy EP, Turismo EP and Reed Piano are made for the kit by synthesis
+  (procedural / physically modelled synthesis, curated by ear), from no recording, and
+  dedicated CC0 1.0 with it. Their `set.json` says `synthesized: true`, and so does each
+  sample's manifest entry, which says `made_by: made` and, in place of a recording, names the
+  24-bit render the sample was dithered from (`member`) with that render's SHA-256
+  (`made_from_sha256`). `check.py` fails such an entry when it names a recording, lacks the
+  render's hash or disagrees with its set's `set.json`, and still fails a made sample that
+  names neither a recording nor a render.
 - CC0 is only as good as the person who applied it; the manifest exists so that a single file
   can be traced to its source and removed if a claim against it ever turns out to be right.
 
@@ -188,7 +216,7 @@ python3 -I tools/compare.py --out DIR [--refs INDEX] [--dawsome BIN]
 
 - The sounds, the `.sfz` and `set.json` files and `MANIFEST.json`: CC0 1.0 Universal
   (`LICENSE`). The sources dedicated their work CC0; the changes made here (conversion,
-  trimming, loops, mapping, and the acoustic guitar's modelled string and body) are dedicated
-  CC0 too.
+  trimming, loops, mapping, the acoustic guitar's modelled string and body, and the Knight
+  upright's layer) and the synthesized electric pianos are dedicated CC0 too.
 - The scripts and tests (`*.py`, `tests/`): GNU General Public License version 3 or
   later (`LICENSE-SCRIPTS`; each file carries `SPDX-License-Identifier: GPL-3.0-or-later`).

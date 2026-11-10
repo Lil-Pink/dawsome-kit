@@ -13,9 +13,10 @@ README.md beside it for the sets whose plan asks for one. A set of
 kind "samples" (the one-shots) has no .sfz. MANIFEST.json then lists every file under sets/
 with its source, the archive or repository file it came from, its path there, its `licence`
 and its SHA-256, and the download sets: sources too big for the repository, which the DAW
-fetches itself by URL and hash. The acoustic guitar is the one set not built here: its files
-are committed as they were made (COMMITTED), and build.py keeps them and their manifest
-entries, each sample's naming the recordings it was made from.
+fetches itself by URL and hash. The acoustic guitar, the Knight upright and the three synthesized
+electric pianos are not built here: their files are committed as they were made (COMMITTED), and
+build.py keeps them and their manifest entries, each guitar and upright sample's naming the
+recordings it was made from, and every one of them the render it was encoded from.
 
 Samples keep their source names, as .flac. A source FLAC of 16 bits or fewer that needs no
 change is copied byte for byte. Every other sample goes through ffmpeg into 16-bit FLAC at the
@@ -989,14 +990,29 @@ FSBS_SHAPE = Shape(floor_db=-60, max_seconds=5.0, fade_seconds=2.0, **WHOLE_PLUC
                    silence=(-60, 0.001))
 
 
-# The acoustic guitar, chosen by ear on 2026-10-26 from three ways of fusing Karoryfer
-# Shinyguitar's recorded archtop with a modelled steel string: the archtop's own pluck drives the
-# modelled string and body. Its samples were made outside this repository and are committed as
-# made, with the set's .sfz, set.json and README.md: build.py does not build the set, it keeps
-# the folder and its MANIFEST.json entries as they are. Each sample's entry names the recordings
-# it was made from (made_from), files sources.json pins for the download named here, which
-# check.py holds it to.
-COMMITTED = {"guitar-acoustic": "karoryfer-shinyguitar"}
+# The sets made outside this repository and committed as made, with each set's .sfz, set.json
+# and README.md: build.py does not build them, it keeps their folders and MANIFEST.json entries as
+# they are. Each names the download its samples were made from, or None for a set synthesized
+# from no recording. A sample made from a download names the recordings it was made from
+# (made_from), files sources.json pins for that download, which check.py holds it to; a
+# synthesized one says synthesized: true, as its set.json does, and names the render it was
+# encoded from and that render's SHA-256 (member, made_from_sha256), as a sample made from a
+# download may too. A new committed set is one line here.
+# - guitar-acoustic: chosen by ear on 2026-11-09 in place of the first build (2026-10-26): the
+#   pluck of Karoryfer Shinyguitar's recorded archtop, kept as recorded and also played through a
+#   modelled flat-top body, drives a modelled steel string.
+# - upright-knight (Upright Knight; 2026-11-09): VCSL's Knight upright recordings, each note its
+#   recording, with a pedal resonance, a per-note variation and effects made for the kit.
+# - ep-dreamy, ep-turismo, ep-reed (Dreamy EP, Turismo EP, Reed Piano; 2026-11-09): physically
+#   modelled tine and reed electric pianos made for the kit, their 24-bit renders dithered to
+#   16-bit FLAC (set.json says how).
+COMMITTED = {
+    "guitar-acoustic": "karoryfer-shinyguitar",
+    "upright-knight": "vcsl",
+    "ep-dreamy": None,
+    "ep-turismo": None,
+    "ep-reed": None,
+}
 
 
 # The bass guitar as chosen by ear on 2026-10-27, from the kit-reference listening set,
@@ -1733,8 +1749,9 @@ def unused_files(sources, built):
     # A repository source's .sfz, which a plan reads its regions from.
     used |= {(plan.source, plan.derived_from) for plan in built if plan.derived_from}
     # A committed set's download: its samples' made_from names recordings in it, which check.py
-    # holds to the files sources.json pins, so every pinned file of it stays fetched.
-    for name in COMMITTED.values():
+    # holds to the files sources.json pins, so every pinned file of it stays fetched. A
+    # synthesized set (None) has no download.
+    for name in filter(None, COMMITTED.values()):
         used |= {(name, entry["path"]) for entry in sources[name].get("files", [])}
     used.add(("sonic-pi", SONIC_PI_README))
     return [f"{name}: {entry['path']}" for name, source in sources.items()

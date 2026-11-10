@@ -6,7 +6,8 @@ against the SFZ subset Dawsome reads.
 usage: python3 -I tools/check.py [--manifest] [--sfz]
        --manifest: every file under sets/ is in MANIFEST.json with its size, its SHA-256, a
                    CC0-1.0 license and where it came from (a sample mixed from several
-                   microphones' files, each of them), and nothing else is there; every
+                   microphones' files, each of them; a sample synthesized from no recording,
+                   the render it was encoded from), and nothing else is there; every
                    download set has a URL, a hash and a CC0-1.0 license
        --sfz: each set has a set.json that matches its files, and an instrument set one .sfz
               whose headers, directives and opcodes are all in kitlib's subset, with values
@@ -35,7 +36,12 @@ MADE_FROM_SOURCE = {"copied", "converted", "processed"}
 # of the scripts it imports under generator_uses), then converted like a downloaded source; one
 # made from recordings names them under made_from (files sources.json pins for a CC0 source).
 # "made": made outside this repository and committed as made; it names the recordings it was
-# made from under made_from, held to sources.json the same way.
+# made from under made_from, held to sources.json the same way, unless it was synthesized from no
+# recording: then it says synthesized: true, as its set's set.json does, names no recordings, and
+# names instead the render it was encoded from (member) with that file's SHA-256
+# (made_from_sha256), so it can still be traced and removed with it. The guitar's rule holds for
+# every other made sample: no made_from, no pass. A made sample from recordings may name its
+# render the same way, beside its made_from; a made_from_sha256 given is always a SHA-256.
 MADE_BY = MADE_FROM_SOURCE | {"written", "generated", "made"}
 SET_FIELDS = ("name", "kind", "maker", "licence", "licence_page", "licence_quote", "source",
               "source_url", "size", "decoded_size", "files", "sample_rates", "channels")
@@ -108,6 +114,40 @@ def made_from_problems(path, made_from, root):
             for member in made_from["members"] if member not in pinned]
 
 
+def set_says_synthesized(root, path, said):
+    """Whether the set.json of the set holding `path` (sets/<set>/...) says synthesized: true;
+    `said` caches the answer per set."""
+    name = path.split("/")[1]
+    if name not in said:
+        about = root / "sets" / name / "set.json"
+        said[name] = about.is_file() and kitlib.read_json(about).get("synthesized") is True
+    return said[name]
+
+
+def synthesized_problems(path, entry, set_says):
+    """A sample that says synthesized: one made for the kit from no recording. It must be a made
+    sample of a set whose set.json says synthesized too, name no recordings, and name the render
+    it was encoded from (member) with that render's SHA-256, by which it is traced. A sample of
+    such a set that does not say so is refused too: the set's word alone excuses no sample."""
+    if entry.get("synthesized") not in (None, True):
+        return [f"{path}: synthesized is {entry['synthesized']!r}; true or absent"]
+    synthesized = entry.get("synthesized") is True
+    if not synthesized:
+        return ([f"{path}: its set's set.json says synthesized, but this sample does not"]
+                if set_says and entry.get("made_by") != "written" else [])
+    found = []
+    if entry.get("made_by") != "made":
+        found.append(f"{path}: synthesized, but made_by {entry.get('made_by')!r}, not made")
+    if not set_says:
+        found.append(f"{path}: synthesized, but its set's set.json does not say so")
+    if "made_from" in entry:
+        found.append(f"{path}: synthesized, yet it names recordings under made_from")
+    if not (entry.get("member") and SHA256.fullmatch(str(entry.get("made_from_sha256")))):
+        found.append(f"{path}: synthesized, but no member and made_from_sha256 (the render it was"
+                     " encoded from) to trace it by")
+    return found
+
+
 def mixed_from_problems(path, entry):
     """A sample mixed from several microphones' files (a drum hit): mixed_from names each one's
     file with its origin URL, SHA-256 and share of the mix (gain in dB, pan -1 to 1), the first of
@@ -131,7 +171,7 @@ def mixed_from_problems(path, entry):
 def check_manifest(root):
     """Problems with sets/ against MANIFEST.json under `root`."""
     manifest = kitlib.read_json(root / "MANIFEST.json")
-    found, listed = [], {}
+    found, listed, said = [], {}, {}
     for entry in manifest.get("files", []):
         path = entry.get("path", "")
         if path in listed:
@@ -158,6 +198,8 @@ def check_manifest(root):
             found.append(f"{path}: no origin URL, origin SHA-256 and member to trace it by")
         if "mixed_from" in entry:
             found += mixed_from_problems(path, entry)
+        if "made_from_sha256" in entry and not SHA256.fullmatch(str(entry["made_from_sha256"])):
+            found.append(f"{path}: made_from_sha256 is not a SHA-256")
         if entry.get("made_by") == "generated":
             script = root / str(entry.get("generator", ""))
             if not (entry.get("generator") and script.is_file() and entry.get("member")):
@@ -168,7 +210,8 @@ def check_manifest(root):
                              " was made; rebuild the set")
             found += generator_use_problems(path, entry.get("generator_uses"), root)
             found += made_from_problems(path, entry.get("made_from"), root)
-        if entry.get("made_by") == "made":
+        found += synthesized_problems(path, entry, set_says_synthesized(root, path, said))
+        if entry.get("made_by") == "made" and entry.get("synthesized") is not True:
             if entry.get("made_from") is None:
                 found.append(f"{path}: made, but no made_from to trace it by")
             found += made_from_problems(path, entry.get("made_from"), root)
